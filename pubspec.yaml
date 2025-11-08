@@ -1,0 +1,32 @@
+name: flutter_starter_kit
+description: A starter kit for Flutter applications using BLoC pattern.
+publish_to: none
+
+environment:
+  sdk: ^3.9.0
+
+workspace:
+  - app
+
+dev_dependencies:
+  melos: ^7.1.1
+
+melos:
+  scripts:
+    generate:
+      name: Generate code for all packages
+      run: melos exec --order-dependents --depends-on="build_runner" -- dart run build_runner build --delete-conflicting-outputs
+
+    analyze:
+      name: Analyze all packages
+      run: |
+        melos exec -- dart analyze .
+    
+    release:
+      name: Build production APK
+      run: flutter build apk --flavor production -t app/lib/main_production.dart --split-per-abi
+    
+    web:
+      name: Build production web
+      run: flutter build web --wasm -t app/lib/main_production.dart
+      
