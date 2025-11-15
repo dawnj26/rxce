@@ -1,7 +1,45 @@
+import 'package:course_package/src/api/api.dart';
+import 'package:course_package/src/enums/enums.dart';
+import 'package:course_package/src/models/models.dart';
+
 /// {@template course_package}
 /// Package course_package
 /// {@endtemplate}
 class CoursePackage {
   /// {@macro course_package}
-  const CoursePackage();
+  CoursePackage({
+    CourseApi? courseApi,
+  }) : _api = courseApi ?? const CourseApi();
+
+  final CourseApi _api;
+
+  /// Fetch courses with pagination
+  Future<PaginatedResponse<Course>> getCourses({
+    int page = 1,
+    int pageSize = 10,
+    CourseType? filterByType,
+    CourseTopic? filterByTopic,
+  }) {
+    return _api.getCourses(
+      page: page,
+      pageSize: pageSize,
+      filterByType: filterByType,
+      filterByTopic: filterByTopic,
+    );
+  }
+
+  /// Fetch a single course by ID
+  Future<Course?> getCourseById(String id) {
+    return _api.getCourseById(id);
+  }
+
+  /// Search courses by title or description
+  Future<List<Course>> searchCourses(String query) {
+    return _api.searchCourses(query);
+  }
+
+  /// Get featured courses (free for members or on sale)
+  Future<List<Course>> getFeaturedCourses({int limit = 5}) {
+    return _api.getFeaturedCourses(limit: limit);
+  }
 }
