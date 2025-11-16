@@ -94,6 +94,10 @@ class CourseApi {
         'dateAdded': DateTime.now()
             .subtract(const Duration(days: 5))
             .toIso8601String(),
+        'startDate': DateTime.now()
+            .add(const Duration(days: 1))
+            .toIso8601String(),
+        'difficultyLevel': 'advanced',
         'ceus': 2.0,
         'price': 49.99,
         'targetAudiences': ['Pharmacists', 'Pharmacy Technicians'],
@@ -110,6 +114,10 @@ class CourseApi {
         'dateAdded': DateTime.now()
             .subtract(const Duration(days: 10))
             .toIso8601String(),
+        'startDate': DateTime.now()
+            .add(const Duration(days: 5))
+            .toIso8601String(),
+        'difficultyLevel': 'intermediate',
         'ceus': 1.5,
         'price': 0.0,
         'targetAudiences': ['Pharmacists'],
@@ -126,6 +134,10 @@ class CourseApi {
         'dateAdded': DateTime.now()
             .subtract(const Duration(days: 15))
             .toIso8601String(),
+        'startDate': DateTime.now()
+            .add(const Duration(days: 10))
+            .toIso8601String(),
+        'difficultyLevel': 'beginner',
         'ceus': 3.0,
         'price': 79.99,
         'targetAudiences': ['Pharmacists'],
@@ -143,6 +155,10 @@ class CourseApi {
         'dateAdded': DateTime.now()
             .subtract(const Duration(days: 20))
             .toIso8601String(),
+        'startDate': DateTime.now()
+            .add(const Duration(days: 15))
+            .toIso8601String(),
+        'difficultyLevel': 'intermediate',
         'ceus': 2.0,
         'price': 39.99,
         'targetAudiences': ['Pharmacists', 'Pharmacy Technicians'],
@@ -159,6 +175,10 @@ class CourseApi {
         'dateAdded': DateTime.now()
             .subtract(const Duration(days: 25))
             .toIso8601String(),
+        'startDate': DateTime.now()
+            .add(const Duration(days: 20))
+            .toIso8601String(),
+        'difficultyLevel': 'beginner',
         'ceus': 4.0,
         'price': 99.99,
         'targetAudiences': ['Pharmacists'],
@@ -175,6 +195,10 @@ class CourseApi {
         'dateAdded': DateTime.now()
             .subtract(const Duration(days: 30))
             .toIso8601String(),
+        'startDate': DateTime.now()
+            .add(const Duration(days: 25))
+            .toIso8601String(),
+        'difficultyLevel': 'intermediate',
         'ceus': 2.5,
         'price': 0.0,
         'targetAudiences': ['Pharmacists', 'Pharmacy Technicians'],
@@ -192,6 +216,10 @@ class CourseApi {
         'dateAdded': DateTime.now()
             .subtract(const Duration(days: 35))
             .toIso8601String(),
+        'startDate': DateTime.now()
+            .add(const Duration(days: 30))
+            .toIso8601String(),
+        'difficultyLevel': 'beginner',
         'ceus': 1.0,
         'price': 29.99,
         'targetAudiences': ['Pharmacists', 'Pharmacy Technicians'],
@@ -208,6 +236,10 @@ class CourseApi {
         'dateAdded': DateTime.now()
             .subtract(const Duration(days: 40))
             .toIso8601String(),
+        'startDate': DateTime.now()
+            .add(const Duration(days: 35))
+            .toIso8601String(),
+        'difficultyLevel': 'advanced',
         'ceus': 3.5,
         'price': 89.99,
         'targetAudiences': ['Pharmacists'],
@@ -224,6 +256,10 @@ class CourseApi {
         'dateAdded': DateTime.now()
             .subtract(const Duration(days: 45))
             .toIso8601String(),
+        'startDate': DateTime.now()
+            .add(const Duration(days: 40))
+            .toIso8601String(),
+        'difficultyLevel': 'advanced',
         'ceus': 2.5,
         'price': 59.99,
         'targetAudiences': ['Pharmacists'],
@@ -240,6 +276,10 @@ class CourseApi {
         'dateAdded': DateTime.now()
             .subtract(const Duration(days: 50))
             .toIso8601String(),
+        'startDate': DateTime.now()
+            .add(const Duration(days: 45))
+            .toIso8601String(),
+        'difficultyLevel': 'intermediate',
         'ceus': 5.0,
         'price': 129.99,
         'targetAudiences': ['Pharmacists', 'Pharmacy Technicians'],
@@ -256,6 +296,10 @@ class CourseApi {
         'dateAdded': DateTime.now()
             .subtract(const Duration(days: 55))
             .toIso8601String(),
+        'startDate': DateTime.now()
+            .add(const Duration(days: 50))
+            .toIso8601String(),
+        'difficultyLevel': 'beginner',
         'ceus': 1.5,
         'price': 0.0,
         'targetAudiences': ['Pharmacists'],
@@ -272,6 +316,10 @@ class CourseApi {
         'dateAdded': DateTime.now()
             .subtract(const Duration(days: 60))
             .toIso8601String(),
+        'startDate': DateTime.now()
+            .add(const Duration(days: 55))
+            .toIso8601String(),
+        'difficultyLevel': 'intermediate',
         'ceus': 3.0,
         'price': 69.99,
         'targetAudiences': ['Pharmacists'],
@@ -288,6 +336,10 @@ class CourseApi {
         'dateAdded': DateTime.now()
             .subtract(const Duration(days: 65))
             .toIso8601String(),
+        'startDate': DateTime.now()
+            .add(const Duration(days: 60))
+            .toIso8601String(),
+        'difficultyLevel': 'beginner',
         'ceus': 1.0,
         'price': 24.99,
         'targetAudiences': ['Pharmacists', 'Pharmacy Technicians'],
@@ -304,6 +356,10 @@ class CourseApi {
         'dateAdded': DateTime.now()
             .subtract(const Duration(days: 70))
             .toIso8601String(),
+        'startDate': DateTime.now()
+            .add(const Duration(days: 65))
+            .toIso8601String(),
+        'difficultyLevel': 'advanced',
         'ceus': 4.0,
         'price': 99.99,
         'targetAudiences': ['Pharmacists'],
@@ -320,6 +376,10 @@ class CourseApi {
         'dateAdded': DateTime.now()
             .subtract(const Duration(days: 75))
             .toIso8601String(),
+        'startDate': DateTime.now()
+            .add(const Duration(days: 70))
+            .toIso8601String(),
+        'difficultyLevel': 'beginner',
         'ceus': 2.0,
         'price': 0.0,
         'targetAudiences': ['Pharmacists', 'Pharmacy Technicians'],
@@ -336,6 +396,10 @@ class CourseApi {
         'dateAdded': DateTime.now()
             .subtract(const Duration(days: 80))
             .toIso8601String(),
+        'startDate': DateTime.now()
+            .add(const Duration(days: 75))
+            .toIso8601String(),
+        'difficultyLevel': 'intermediate',
         'ceus': 2.0,
         'price': 44.99,
         'targetAudiences': ['Pharmacists'],
@@ -352,6 +416,10 @@ class CourseApi {
         'dateAdded': DateTime.now()
             .subtract(const Duration(days: 85))
             .toIso8601String(),
+        'startDate': DateTime.now()
+            .add(const Duration(days: 80))
+            .toIso8601String(),
+        'difficultyLevel': 'advanced',
         'ceus': 2.5,
         'price': 54.99,
         'targetAudiences': ['Pharmacists'],
@@ -368,6 +436,10 @@ class CourseApi {
         'dateAdded': DateTime.now()
             .subtract(const Duration(days: 90))
             .toIso8601String(),
+        'startDate': DateTime.now()
+            .add(const Duration(days: 85))
+            .toIso8601String(),
+        'difficultyLevel': 'beginner',
         'ceus': 1.5,
         'price': 34.99,
         'targetAudiences': ['Pharmacists', 'Pharmacy Technicians'],
@@ -384,6 +456,10 @@ class CourseApi {
         'dateAdded': DateTime.now()
             .subtract(const Duration(days: 95))
             .toIso8601String(),
+        'startDate': DateTime.now()
+            .add(const Duration(days: 90))
+            .toIso8601String(),
+        'difficultyLevel': 'intermediate',
         'ceus': 1.0,
         'price': 29.99,
         'targetAudiences': ['Pharmacists'],
@@ -400,6 +476,10 @@ class CourseApi {
         'dateAdded': DateTime.now()
             .subtract(const Duration(days: 100))
             .toIso8601String(),
+        'startDate': DateTime.now()
+            .add(const Duration(days: 95))
+            .toIso8601String(),
+        'difficultyLevel': 'beginner',
         'ceus': 2.0,
         'price': 0.0,
         'targetAudiences': ['Pharmacists'],
@@ -416,6 +496,10 @@ class CourseApi {
         'dateAdded': DateTime.now()
             .subtract(const Duration(days: 105))
             .toIso8601String(),
+        'startDate': DateTime.now()
+            .add(const Duration(days: 100))
+            .toIso8601String(),
+        'difficultyLevel': 'advanced',
         'ceus': 2.5,
         'price': 49.99,
         'targetAudiences': ['Pharmacists'],
@@ -432,6 +516,10 @@ class CourseApi {
         'dateAdded': DateTime.now()
             .subtract(const Duration(days: 110))
             .toIso8601String(),
+        'startDate': DateTime.now()
+            .add(const Duration(days: 105))
+            .toIso8601String(),
+        'difficultyLevel': 'intermediate',
         'ceus': 3.0,
         'price': 74.99,
         'targetAudiences': ['Pharmacists'],
@@ -448,6 +536,10 @@ class CourseApi {
         'dateAdded': DateTime.now()
             .subtract(const Duration(days: 115))
             .toIso8601String(),
+        'startDate': DateTime.now()
+            .add(const Duration(days: 110))
+            .toIso8601String(),
+        'difficultyLevel': 'advanced',
         'ceus': 2.0,
         'price': 54.99,
         'targetAudiences': ['Pharmacists'],
@@ -459,6 +551,6 @@ class CourseApi {
       },
     ];
 
-    return coursesJson.map(Course.fromJson).toList();
+    return coursesJson.map(CourseItem.fromJson).toList();
   }
 }
