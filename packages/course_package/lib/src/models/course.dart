@@ -19,7 +19,7 @@ abstract class Course with _$Course {
     required double ceus,
     required double price,
     required List<String> targetAudiences,
-    required CourseTopic topic,
+    required CourseCategory topic,
     required DifficultyLevel difficultyLevel,
     @Default(false) bool isLive,
     @Default(false) bool isPrerecordedWebinar,

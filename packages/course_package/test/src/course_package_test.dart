@@ -19,7 +19,7 @@ void main() {
 
     group('getCourses', () {
       test('delegates to api with correct parameters', () async {
-        final mockResponse = PaginatedResponse<Course>(
+        final mockResponse = PaginatedResponse<CourseItem>(
           items: [],
           total: 0,
           page: 1,
@@ -39,7 +39,7 @@ void main() {
           page: 2,
           pageSize: 20,
           filterByType: CourseType.live,
-          filterByTopic: CourseTopic.drugTherapy,
+          filterByTopic: CourseCategory.drugTherapy,
         );
 
         expect(result, mockResponse);
@@ -48,13 +48,13 @@ void main() {
             page: 2,
             pageSize: 20,
             filterByType: CourseType.live,
-            filterByTopic: CourseTopic.drugTherapy,
+            filterByTopic: CourseCategory.drugTherapy,
           ),
         ).called(1);
       });
 
       test('uses default parameters when not specified', () async {
-        final mockResponse = PaginatedResponse<Course>(
+        final mockResponse = PaginatedResponse<CourseItem>(
           items: [],
           total: 0,
           page: 1,
@@ -80,7 +80,7 @@ void main() {
 
     group('getCourseById', () {
       test('delegates to api and returns course', () async {
-        final mockCourse = Course.fromJson({
+        final mockCourse = CourseItem.fromJson({
           'id': '1',
           'title': 'Test Course',
           'description': 'Test Description',
@@ -119,7 +119,7 @@ void main() {
 
     group('searchCourses', () {
       test('delegates to api with search query', () async {
-        final mockCourses = <Course>[];
+        final mockCourses = <CourseItem>[];
 
         when(
           () => mockApi.searchCourses('diabetes'),
@@ -142,7 +142,7 @@ void main() {
 
     group('getFeaturedCourses', () {
       test('delegates to api with default limit', () async {
-        final mockCourses = <Course>[];
+        final mockCourses = <CourseItem>[];
 
         when(
           () => mockApi.getFeaturedCourses(limit: any(named: 'limit')),
@@ -155,7 +155,7 @@ void main() {
       });
 
       test('delegates to api with custom limit', () async {
-        final mockCourses = <Course>[];
+        final mockCourses = <CourseItem>[];
 
         when(
           () => mockApi.getFeaturedCourses(limit: any(named: 'limit')),
