@@ -1,4 +1,4 @@
-enum CourseTopic {
+enum CourseCategory {
   drugTherapy,
   hivAidsTherapy,
   law,
@@ -11,23 +11,23 @@ enum CourseTopic {
 
   String get label {
     switch (this) {
-      case CourseTopic.drugTherapy:
+      case CourseCategory.drugTherapy:
         return 'Disease State Management/Drug Therapy';
-      case CourseTopic.hivAidsTherapy:
+      case CourseCategory.hivAidsTherapy:
         return 'HIV/AIDS Therapy';
-      case CourseTopic.law:
+      case CourseCategory.law:
         return 'Law';
-      case CourseTopic.pharmacyAdministration:
+      case CourseCategory.pharmacyAdministration:
         return 'Pharmacy Administration';
-      case CourseTopic.patientSafety:
+      case CourseCategory.patientSafety:
         return 'Patient Safety';
-      case CourseTopic.immunizations:
+      case CourseCategory.immunizations:
         return 'Immunizations';
-      case CourseTopic.compounding:
+      case CourseCategory.compounding:
         return 'Compounding';
-      case CourseTopic.opioids:
+      case CourseCategory.opioids:
         return 'Pain Management/Opioids';
-      case CourseTopic.additional:
+      case CourseCategory.additional:
         return 'Additional Topic Areas';
     }
   }
