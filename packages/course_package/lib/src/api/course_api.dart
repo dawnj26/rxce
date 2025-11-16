@@ -1,15 +1,14 @@
-import 'package:course_package/src/enums/course_category.dart';
-import 'package:course_package/src/enums/course_type.dart';
+import 'package:course_package/src/enums/enums.dart';
 import 'package:course_package/src/models/models.dart';
 
 class CourseApi {
   const CourseApi();
 
   // Simulated database
-  static final List<Course> _courses = _generateSampleCourses();
+  static final List<CourseItem> _courses = _generateSampleCourses();
 
   /// Fetch courses with pagination
-  Future<PaginatedResponse<Course>> getCourses({
+  Future<PaginatedResponse<CourseItem>> getCourses({
     int page = 1,
     int pageSize = 10,
     CourseType? filterByType,
@@ -18,7 +17,7 @@ class CourseApi {
     // Simulate network delay
     await Future<void>.delayed(const Duration(milliseconds: 500));
 
-    var filteredCourses = List<Course>.from(_courses);
+    var filteredCourses = List<CourseItem>.from(_courses);
 
     // Apply filters
     if (filterByType != null) {
@@ -51,7 +50,7 @@ class CourseApi {
   }
 
   /// Fetch a single course by ID
-  Future<Course?> getCourseById(String id) async {
+  Future<CourseItem?> getCourseById(String id) async {
     await Future<void>.delayed(const Duration(milliseconds: 300));
 
     try {
@@ -65,7 +64,7 @@ class CourseApi {
   }
 
   /// Search courses by title or description
-  Future<List<Course>> searchCourses(String query) async {
+  Future<List<CourseItem>> searchCourses(String query) async {
     await Future<void>.delayed(const Duration(milliseconds: 400));
 
     final lowerQuery = query.toLowerCase();
@@ -76,7 +75,7 @@ class CourseApi {
   }
 
   /// Get featured courses (free for members or on sale)
-  Future<List<Course>> getFeaturedCourses({int limit = 5}) async {
+  Future<List<CourseItem>> getFeaturedCourses({int limit = 5}) async {
     await Future<void>.delayed(const Duration(milliseconds: 300));
 
     return _courses
@@ -85,7 +84,7 @@ class CourseApi {
         .toList();
   }
 
-  static List<Course> _generateSampleCourses() {
+  static List<CourseItem> _generateSampleCourses() {
     final coursesJson = [
       {
         'id': '1',
