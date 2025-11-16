@@ -12,7 +12,8 @@ class CourseApi {
     int page = 1,
     int pageSize = 10,
     CourseType? filterByType,
-    CourseTopic? filterByTopic,
+    CourseCategory? filterByTopic,
+    List<CourseSortOption>? sortBy,
   }) async {
     // Simulate network delay
     await Future<void>.delayed(const Duration(milliseconds: 500));
@@ -32,6 +33,13 @@ class CourseApi {
       }).toList();
     }
 
+    // Apply sorting
+    if (sortBy != null && sortBy.isNotEmpty) {
+      filteredCourses.sort(
+        (a, b) => _compareWithMultipleCriteria(a, b, sortBy),
+      );
+    }
+
     final total = filteredCourses.length;
     final startIndex = (page - 1) * pageSize;
     final endIndex = (startIndex + pageSize).clamp(0, total);
@@ -47,6 +55,48 @@ class CourseApi {
       page: page,
       pageSize: pageSize,
     );
+  }
+
+  /// Compare two courses using multiple sort criteria
+  /// Returns 0 if equal, negative if a < b, positive if a > b
+  int _compareWithMultipleCriteria(
+    CourseItem a,
+    CourseItem b,
+    List<CourseSortOption> sortOptions,
+  ) {
+    for (final option in sortOptions) {
+      final comparison = _compareBySingleCriteria(a, b, option);
+      if (comparison != 0) {
+        return comparison;
+      }
+    }
+    return 0;
+  }
+
+  /// Compare two courses by a single criterion
+  int _compareBySingleCriteria(
+    CourseItem a,
+    CourseItem b,
+    CourseSortOption option,
+  ) {
+    switch (option) {
+      case CourseSortOption.nameAsc:
+        return a.title.toLowerCase().compareTo(b.title.toLowerCase());
+      case CourseSortOption.nameDesc:
+        return b.title.toLowerCase().compareTo(a.title.toLowerCase());
+      case CourseSortOption.liveFirst:
+        // Live courses first (true = 1, false = 0, so we invert)
+        if (a.isLive == b.isLive) return 0;
+        return a.isLive ? -1 : 1;
+      case CourseSortOption.hoursAsc:
+        return a.ceus.compareTo(b.ceus);
+      case CourseSortOption.hoursDesc:
+        return b.ceus.compareTo(a.ceus);
+      case CourseSortOption.dateAddedNewest:
+        return b.dateAdded.compareTo(a.dateAdded);
+      case CourseSortOption.dateAddedOldest:
+        return a.dateAdded.compareTo(b.dateAdded);
+    }
   }
 
   /// Fetch a single course by ID
