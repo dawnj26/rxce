@@ -18,13 +18,15 @@ class CoursePackage {
     int page = 1,
     int pageSize = 10,
     CourseType? filterByType,
-    CourseTopic? filterByTopic,
+    CourseCategory? filterByTopic,
+    List<CourseSortOption>? sortBy,
   }) {
     return _api.getCourses(
       page: page,
       pageSize: pageSize,
       filterByType: filterByType,
       filterByTopic: filterByTopic,
+      sortBy: sortBy,
     );
   }
 
