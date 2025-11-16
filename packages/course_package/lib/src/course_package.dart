@@ -14,7 +14,7 @@ class CoursePackage {
   final CourseApi _api;
 
   /// Fetch courses with pagination
-  Future<PaginatedResponse<Course>> getCourses({
+  Future<PaginatedResponse<CourseItem>> getCourses({
     int page = 1,
     int pageSize = 10,
     CourseType? filterByType,
@@ -29,17 +29,17 @@ class CoursePackage {
   }
 
   /// Fetch a single course by ID
-  Future<Course?> getCourseById(String id) {
+  Future<CourseItem?> getCourseById(String id) {
     return _api.getCourseById(id);
   }
 
   /// Search courses by title or description
-  Future<List<Course>> searchCourses(String query) {
+  Future<List<CourseItem>> searchCourses(String query) {
     return _api.searchCourses(query);
   }
 
   /// Get featured courses (free for members or on sale)
-  Future<List<Course>> getFeaturedCourses({int limit = 5}) {
+  Future<List<CourseItem>> getFeaturedCourses({int limit = 5}) {
     return _api.getFeaturedCourses(limit: limit);
   }
 }
