@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:app/shared/loading_status.dart';
 import 'package:app/shared/stream.dart';
+import 'package:app/ui/course/models/sort_option.dart';
 import 'package:bloc/bloc.dart';
 import 'package:course_package/course_package.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -113,6 +114,7 @@ class CourseListBloc extends Bloc<CourseListEvent, CourseListState> {
       state.copyWith(
         filterByTopic: event.filterByTopic,
         filterByType: event.filterByType,
+        sortOption: event.sortOption ?? state.sortOption,
         currentPage: 1,
         hasReachedMax: false,
         courses: [],
