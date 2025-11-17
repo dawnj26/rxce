@@ -16,7 +16,20 @@ class CourseListScreen extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Courses'),
         actions: [
-          IconButton(onPressed: () {}, icon: const Icon(Icons.search)),
+          IconButton(
+            onPressed: () async {
+              await context.router.push(
+                CourseSearchRoute(
+                  onFinished: (query) async {
+                    await context.router.replace(
+                      CourseSearchResultRoute(query: query),
+                    );
+                  },
+                ),
+              );
+            },
+            icon: const Icon(Icons.search),
+          ),
         ],
       ),
       body: ScrollListener(
