@@ -1,6 +1,8 @@
 import 'package:app/ui/components/select_card.dart';
+import 'package:app/ui/course/components/components.dart';
 import 'package:course_package/course_package.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class CourseTypeFilterCard extends StatelessWidget {
   const CourseTypeFilterCard({
@@ -19,9 +21,15 @@ class CourseTypeFilterCard extends StatelessWidget {
     return SelectCard(
       isSelected: isSelected,
       onTap: onTap,
-      child: Text(
-        type.label,
-        overflow: TextOverflow.ellipsis,
+      child: Row(
+        children: [
+          FaIcon(type.icon, size: 16),
+          const SizedBox(width: 8),
+          Text(
+            type.label,
+            overflow: TextOverflow.ellipsis,
+          ),
+        ],
       ),
     );
   }
