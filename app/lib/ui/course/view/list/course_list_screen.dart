@@ -33,7 +33,7 @@ class CourseListScreen extends StatelessWidget {
         ],
       ),
       body: ScrollListener(
-        onLoadMore: () => context.read<CourseListBloc>().add(
+        onScrollEnd: () => context.read<CourseListBloc>().add(
           const CourseListEvent.loadMore(),
         ),
         slivers: [
