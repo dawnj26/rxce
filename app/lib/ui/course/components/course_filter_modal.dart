@@ -1,5 +1,7 @@
+import 'package:app/ui/components/select_card.dart';
 import 'package:app/ui/course/components/category_filter_list.dart';
 import 'package:app/ui/course/components/course_type_filter_grid.dart';
+import 'package:app/ui/course/models/sort_option.dart';
 import 'package:course_package/course_package.dart';
 import 'package:flutter/material.dart';
 
@@ -10,12 +12,14 @@ class CourseFilterModal extends StatefulWidget {
     this.selectedType,
     this.onReset,
     this.onApply,
+    this.selectedSortOption = SortOption.aToZliveFirst,
   });
 
   final CourseCategory? selectedCategory;
   final CourseType? selectedType;
+  final SortOption selectedSortOption;
   final void Function()? onReset;
-  final void Function(CourseCategory? c, CourseType? t)? onApply;
+  final void Function(CourseCategory? c, CourseType? t, SortOption s)? onApply;
 
   @override
   State<CourseFilterModal> createState() => _CourseFilterModalState();
@@ -24,6 +28,7 @@ class CourseFilterModal extends StatefulWidget {
 class _CourseFilterModalState extends State<CourseFilterModal> {
   late CourseCategory? _category;
   late CourseType? _type;
+  late SortOption _sortOption;
   late final List<CourseCategory> _categories;
 
   @override
@@ -33,6 +38,7 @@ class _CourseFilterModalState extends State<CourseFilterModal> {
     _category = widget.selectedCategory;
     _type = widget.selectedType;
     _categories = CourseCategory.values;
+    _sortOption = widget.selectedSortOption;
   }
 
   @override
@@ -42,7 +48,7 @@ class _CourseFilterModalState extends State<CourseFilterModal> {
     final colorScheme = Theme.of(context).colorScheme;
 
     return SizedBox(
-      height: desiredHeight, // Adjust height as needed
+      height: desiredHeight,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
@@ -56,7 +62,7 @@ class _CourseFilterModalState extends State<CourseFilterModal> {
             child: _FilterHeader(),
           ),
           DefaultTabController(
-            length: 2,
+            length: 3,
             child: Expanded(
               child: Column(
                 children: [
@@ -65,6 +71,7 @@ class _CourseFilterModalState extends State<CourseFilterModal> {
                     tabs: const [
                       Tab(text: 'Categories'),
                       Tab(text: 'Type'),
+                      Tab(text: 'Sort'),
                     ],
                   ),
                   Expanded(
@@ -75,7 +82,11 @@ class _CourseFilterModalState extends State<CourseFilterModal> {
                           selected: _category,
                           onSelected: (category) {
                             setState(() {
-                              _category = category;
+                              if (_category == category) {
+                                _category = null;
+                              } else {
+                                _category = category;
+                              }
                             });
                           },
                         ),
@@ -83,8 +94,41 @@ class _CourseFilterModalState extends State<CourseFilterModal> {
                           selected: _type,
                           onSelected: (type) {
                             setState(() {
-                              _type = type;
+                              if (_type == type) {
+                                _type = null;
+                              } else {
+                                _type = type;
+                              }
                             });
+                          },
+                        ),
+                        Builder(
+                          builder: (c) {
+                            const sortOptions = SortOption.values;
+
+                            return ListView.builder(
+                              padding: const EdgeInsets.fromLTRB(
+                                12,
+                                12,
+                                12,
+                                12,
+                              ),
+                              itemBuilder: (c, i) {
+                                final sortOption = sortOptions[i];
+                                final isSelected = _sortOption == sortOption;
+
+                                return SelectCard(
+                                  isSelected: isSelected,
+                                  child: Text(sortOption.label),
+                                  onTap: () {
+                                    setState(() {
+                                      _sortOption = sortOption;
+                                    });
+                                  },
+                                );
+                              },
+                              itemCount: sortOptions.length,
+                            );
                           },
                         ),
                       ],
@@ -103,7 +147,8 @@ class _CourseFilterModalState extends State<CourseFilterModal> {
             ),
             child: _FilterFooter(
               onReset: widget.onReset,
-              onApply: () => widget.onApply?.call(_category, _type),
+              onApply: () =>
+                  widget.onApply?.call(_category, _type, _sortOption),
             ),
           ),
         ],
