@@ -7,6 +7,9 @@ class CourseApi {
   // Simulated database
   static final List<CourseItem> _courses = _generateSampleCourses();
 
+  // Search index for scalable suggestions
+  static final Map<String, Set<String>> _searchIndex = _buildSearchIndex();
+
   /// Fetch courses with pagination
   Future<PaginatedResponse<CourseItem>> getCourses({
     int page = 1,
