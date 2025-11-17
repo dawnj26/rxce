@@ -58,4 +58,9 @@ class CoursePackage {
   Future<List<CourseItem>> getFeaturedCourses({int limit = 5}) {
     return _api.getFeaturedCourses(limit: limit);
   }
+
+  /// Get search suggestions based on a query
+  Future<List<String>> getSearchSuggestions(String query, {int limit = 10}) {
+    return _api.getSearchSuggestions(query, limit: limit);
+  }
 }
