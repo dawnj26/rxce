@@ -113,9 +113,9 @@ void main() {
       test('finds courses by title', () async {
         final results = await courseApi.searchCourses('Diabetes');
 
-        expect(results.isNotEmpty, true);
+        expect(results.items.isNotEmpty, true);
         expect(
-          results.any((c) => c.title.contains('Diabetes')),
+          results.items.any((c) => c.title.contains('Diabetes')),
           true,
         );
       });
@@ -123,9 +123,9 @@ void main() {
       test('finds courses by description', () async {
         final results = await courseApi.searchCourses('patient care');
 
-        expect(results.isNotEmpty, true);
+        expect(results.items.isNotEmpty, true);
         expect(
-          results.any(
+          results.items.any(
             (c) => c.description.toLowerCase().contains('patient care'),
           ),
           true,
@@ -137,8 +137,8 @@ void main() {
         final upperCase = await courseApi.searchCourses('DIABETES');
         final mixedCase = await courseApi.searchCourses('DiAbEtEs');
 
-        expect(lowerCase.length, upperCase.length);
-        expect(lowerCase.length, mixedCase.length);
+        expect(lowerCase.items.length, upperCase.items.length);
+        expect(lowerCase.items.length, mixedCase.items.length);
       });
 
       test('returns empty list when no matches found', () async {
@@ -150,7 +150,7 @@ void main() {
       test('returns multiple matching courses', () async {
         final results = await courseApi.searchCourses('Pharmacist');
 
-        expect(results.length, greaterThan(1));
+        expect(results.items.length, greaterThan(1));
       });
     });
 

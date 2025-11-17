@@ -119,7 +119,12 @@ void main() {
 
     group('searchCourses', () {
       test('delegates to api with search query', () async {
-        final mockCourses = <CourseItem>[];
+        final mockCourses = PaginatedResponse<CourseItem>(
+          items: [],
+          total: 0,
+          page: 1,
+          pageSize: 0,
+        );
 
         when(
           () => mockApi.searchCourses('diabetes'),
@@ -132,7 +137,14 @@ void main() {
       });
 
       test('handles empty search results', () async {
-        when(() => mockApi.searchCourses('xyz123')).thenAnswer((_) async => []);
+        when(() => mockApi.searchCourses('xyz123')).thenAnswer(
+          (_) async => PaginatedResponse<CourseItem>(
+            items: [],
+            total: 0,
+            page: 1,
+            pageSize: 0,
+          ),
+        );
 
         final result = await coursePackage.searchCourses('xyz123');
 
