@@ -36,8 +36,22 @@ class CoursePackage {
   }
 
   /// Search courses by title or description
-  Future<List<CourseItem>> searchCourses(String query) {
-    return _api.searchCourses(query);
+  Future<PaginatedResponse<CourseItem>> searchCourses(
+    String query, {
+    int page = 1,
+    int pageSize = 10,
+    CourseType? filterByType,
+    CourseCategory? filterByTopic,
+    List<CourseSortOption>? sortBy,
+  }) {
+    return _api.searchCourses(
+      query,
+      page: page,
+      pageSize: pageSize,
+      filterByType: filterByType,
+      filterByTopic: filterByTopic,
+      sortBy: sortBy,
+    );
   }
 
   /// Get featured courses (free for members or on sale)

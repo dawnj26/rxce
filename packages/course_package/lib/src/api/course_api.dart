@@ -114,14 +114,57 @@ class CourseApi {
   }
 
   /// Search courses by title or description
-  Future<List<CourseItem>> searchCourses(String query) async {
+  Future<PaginatedResponse<CourseItem>> searchCourses(
+    String query, {
+    int page = 1,
+    int pageSize = 10,
+    CourseType? filterByType,
+    CourseCategory? filterByTopic,
+    List<CourseSortOption>? sortBy,
+  }) async {
     await Future<void>.delayed(const Duration(milliseconds: 400));
 
     final lowerQuery = query.toLowerCase();
-    return _courses.where((course) {
+    var filteredCourses = _courses.where((course) {
       return course.title.toLowerCase().contains(lowerQuery) ||
           course.description.toLowerCase().contains(lowerQuery);
     }).toList();
+
+    // Apply filters
+    if (filterByType != null) {
+      filteredCourses = filteredCourses.where((course) {
+        return course.courseType == filterByType;
+      }).toList();
+    }
+
+    if (filterByTopic != null) {
+      filteredCourses = filteredCourses.where((course) {
+        return course.topic == filterByTopic;
+      }).toList();
+    }
+
+    // Apply sorting
+    if (sortBy != null && sortBy.isNotEmpty) {
+      filteredCourses.sort(
+        (a, b) => _compareWithMultipleCriteria(a, b, sortBy),
+      );
+    }
+
+    final total = filteredCourses.length;
+    final startIndex = (page - 1) * pageSize;
+    final endIndex = (startIndex + pageSize).clamp(0, total);
+
+    final paginatedItems = filteredCourses.sublist(
+      startIndex.clamp(0, total),
+      endIndex,
+    );
+
+    return PaginatedResponse(
+      items: paginatedItems,
+      total: total,
+      page: page,
+      pageSize: pageSize,
+    );
   }
 
   /// Get featured courses (free for members or on sale)
