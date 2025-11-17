@@ -1,9 +1,11 @@
 import 'package:app/bloc/course/course_list_bloc.dart';
+import 'package:app/router/router.dart';
 import 'package:app/shared/loading_status.dart';
+import 'package:app/shared/modals.dart';
 import 'package:app/ui/components/filter_button.dart';
 import 'package:app/ui/components/scroll_listener.dart';
 import 'package:app/ui/course/components/components.dart';
-import 'package:app/ui/course/components/course_filter_modal.dart';
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -12,6 +14,8 @@ class CourseListScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('Courses'),
@@ -39,53 +43,22 @@ class CourseListScreen extends StatelessWidget {
         slivers: [
           SliverToBoxAdapter(
             child: Padding(
-              padding: const EdgeInsets.fromLTRB(0, 0, 8, 0),
+              padding: const EdgeInsets.fromLTRB(16, 0, 8, 0),
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.end,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  FilterButton(
-                    activeFiltersCount: 0,
-                    onPressed: () async {
-                      const double borderRadius = 12;
-                      final categoryFilter = context
-                          .read<CourseListBloc>()
-                          .state
-                          .filterByTopic;
-                      final typeFilter = context
-                          .read<CourseListBloc>()
-                          .state
-                          .filterByType;
+                  Text('All Courses', style: textTheme.labelLarge),
+                  Builder(
+                    builder: (context) {
+                      final state = context.watch<CourseListBloc>().state;
 
-                      await showModalBottomSheet<void>(
-                        shape: const RoundedRectangleBorder(
-                          borderRadius: BorderRadius.only(
-                            topLeft: Radius.circular(borderRadius),
-                            topRight: Radius.circular(borderRadius),
-                          ),
-                        ),
-                        context: context,
-                        isScrollControlled: true,
-                        builder: (BuildContext _) {
-                          return CourseFilterModal(
-                            selectedCategory: categoryFilter,
-                            selectedType: typeFilter,
-                            onReset: () {
-                              Navigator.pop(context);
-                              context.read<CourseListBloc>().add(
-                                const CourseListEvent.filterChanged(),
-                              );
-                            },
-                            onApply: (c, t) {
-                              Navigator.pop(context);
-                              context.read<CourseListBloc>().add(
-                                CourseListEvent.filterChanged(
-                                  filterByTopic: c,
-                                  filterByType: t,
-                                ),
-                              );
-                            },
-                          );
-                        },
+                      final activeFiltersCount =
+                          (state.filterByTopic != null ? 1 : 0) +
+                          (state.filterByType != null ? 1 : 0);
+
+                      return FilterButton(
+                        activeFiltersCount: activeFiltersCount,
+                        onPressed: () => _handleFilterTap(context),
                       );
                     },
                   ),
@@ -140,6 +113,35 @@ class CourseListScreen extends StatelessWidget {
           ),
         ],
       ),
+    );
+  }
+
+  Future<void> _handleFilterTap(BuildContext context) async {
+    final categoryFilter = context.read<CourseListBloc>().state.filterByTopic;
+    final typeFilter = context.read<CourseListBloc>().state.filterByType;
+    final sortOption = context.read<CourseListBloc>().state.sortOption;
+
+    await showCourseFilterModal(
+      context: context,
+      categoryFilter: categoryFilter,
+      typeFilter: typeFilter,
+      sortOption: sortOption,
+      onReset: () {
+        Navigator.of(context).pop();
+        context.read<CourseListBloc>().add(
+          const CourseListEvent.filterChanged(),
+        );
+      },
+      onApply: (category, type, sort) {
+        Navigator.of(context).pop();
+        context.read<CourseListBloc>().add(
+          CourseListEvent.filterChanged(
+            filterByTopic: category,
+            filterByType: type,
+            sortOption: sort,
+          ),
+        );
+      },
     );
   }
 }
