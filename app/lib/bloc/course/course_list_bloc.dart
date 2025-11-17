@@ -102,7 +102,13 @@ class CourseListBloc extends Bloc<CourseListEvent, CourseListState> {
   FutureOr<void> _onFilterChanged(
     _FilterChanged event,
     Emitter<CourseListState> emit,
-  ) {
+  ) async {
+    if (event.filterByTopic == state.filterByTopic &&
+        event.filterByType == state.filterByType &&
+        event.sortOption == state.sortOption) {
+      return;
+    }
+
     emit(
       state.copyWith(
         filterByTopic: event.filterByTopic,
