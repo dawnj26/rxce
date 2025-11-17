@@ -177,6 +177,125 @@ class CourseApi {
         .toList();
   }
 
+  /// Get search suggestions based on partial query
+  /// Returns up to [limit] suggestions ranked by relevance
+  Future<List<String>> getSearchSuggestions(
+    String query, {
+    int limit = 10,
+  }) async {
+    await Future<void>.delayed(const Duration(milliseconds: 300));
+
+    if (query.isEmpty || query.length < 2) {
+      return [];
+    }
+
+    final lowerQuery = query.toLowerCase().trim();
+    final tokens = lowerQuery.split(' ');
+    final suggestionScores = <String, int>{};
+
+    // Search in the index
+    for (final entry in _searchIndex.entries) {
+      final term = entry.key;
+      final courseIds = entry.value;
+
+      // Check if term matches any token (prefix matching)
+      var matches = false;
+      var matchQuality = 0;
+
+      for (final token in tokens) {
+        if (term.startsWith(token)) {
+          matches = true;
+          // Exact match scores higher than prefix match
+          matchQuality = term == token ? 3 : 2;
+          break;
+        } else if (term.contains(token)) {
+          matches = true;
+          matchQuality = 1;
+          break;
+        }
+      }
+
+      if (matches) {
+        // Find actual course titles/terms that match
+        for (final courseId in courseIds) {
+          final course = _courses.firstWhere((c) => c.id == courseId);
+          final titleWords = course.title.toLowerCase().split(' ');
+
+          for (final word in titleWords) {
+            if (word.startsWith(lowerQuery) || word.contains(lowerQuery)) {
+              final suggestion = course.title;
+              suggestionScores[suggestion] =
+                  (suggestionScores[suggestion] ?? 0) + matchQuality;
+            }
+          }
+
+          // Also add individual terms as suggestions
+          if (term.startsWith(lowerQuery)) {
+            suggestionScores[term] =
+                (suggestionScores[term] ?? 0) + matchQuality;
+          }
+        }
+      }
+    }
+
+    // Sort by score (descending) and return top suggestions
+    final sortedSuggestions = suggestionScores.entries.toList()
+      ..sort((a, b) => b.value.compareTo(a.value));
+
+    return sortedSuggestions.take(limit).map((e) => e.key).toList();
+  }
+
+  /// Build inverted index for fast search suggestions
+  /// Maps terms to course IDs that contain them
+  static Map<String, Set<String>> _buildSearchIndex() {
+    final index = <String, Set<String>>{};
+
+    for (final course in _courses) {
+      final terms = _extractSearchTerms(course);
+
+      for (final term in terms) {
+        index.putIfAbsent(term, () => <String>{}).add(course.id);
+      }
+    }
+
+    return index;
+  }
+
+  /// Extract searchable terms from a course
+  static Set<String> _extractSearchTerms(CourseItem course) {
+    final terms = <String>{};
+
+    // Add words from title
+    final titleWords = course.title.toLowerCase().split(RegExp(r'\s+'));
+    terms.addAll(titleWords);
+
+    // Add words from description
+    final descWords = course.description.toLowerCase().split(RegExp(r'\s+'));
+    terms
+      ..addAll(descWords.take(20)) // Limit description words for performance
+      ..add(
+        course.topic.toString().split('.').last.toLowerCase(),
+      ); // Add topic/category as terms
+
+    // Remove common stop words and very short terms
+    final stopWords = {
+      'a',
+      'an',
+      'the',
+      'and',
+      'or',
+      'but',
+      'in',
+      'on',
+      'at',
+      'to',
+      'for',
+    };
+    terms.removeWhere((term) => term.length < 2 || stopWords.contains(term));
+
+    return terms;
+  }
+
   static List<CourseItem> _generateSampleCourses() {
     final coursesJson = [
       {
