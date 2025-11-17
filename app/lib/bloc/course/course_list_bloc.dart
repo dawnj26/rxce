@@ -13,8 +13,13 @@ part 'course_list_bloc.freezed.dart';
 class CourseListBloc extends Bloc<CourseListEvent, CourseListState> {
   CourseListBloc({
     required CoursePackage coursePackage,
+    String? query,
   }) : _coursePackage = coursePackage,
-       super(const _Initial()) {
+       super(
+         _Initial(
+           query: query,
+         ),
+       ) {
     on<_Started>(_onStarted);
     on<_LoadMore>(
       _onLoadMore,
@@ -36,11 +41,11 @@ class CourseListBloc extends Bloc<CourseListEvent, CourseListState> {
     emit(state.copyWith(status: LoadingStatus.loading));
 
     try {
-      final response = await _coursePackage.getCourses(
-        sortBy: state.sortOptions,
+      final response = await _fetchCourses(
+        page: 1,
         filterByType: state.filterByType,
         filterByTopic: state.filterByTopic,
-        pageSize: _itemsPerPage,
+        sortBy: state.sortOption.options,
       );
       emit(
         state.copyWith(
@@ -67,12 +72,11 @@ class CourseListBloc extends Bloc<CourseListEvent, CourseListState> {
 
     try {
       final nextPage = state.currentPage + 1;
-      final response = await _coursePackage.getCourses(
+      final response = await _fetchCourses(
         page: nextPage,
-        sortBy: state.sortOptions,
         filterByType: state.filterByType,
         filterByTopic: state.filterByTopic,
-        pageSize: _itemsPerPage,
+        sortBy: state.sortOption.options,
       );
 
       final hasReachedMax = response.items.isEmpty || !response.hasMore;
@@ -124,5 +128,31 @@ class CourseListBloc extends Bloc<CourseListEvent, CourseListState> {
       ),
     );
     add(const CourseListEvent.started());
+  }
+
+  Future<PaginatedResponse<CourseItem>> _fetchCourses({
+    required int page,
+    CourseType? filterByType,
+    CourseCategory? filterByTopic,
+    List<CourseSortOption>? sortBy,
+  }) {
+    if (state.query != null && state.query!.isNotEmpty) {
+      return _coursePackage.searchCourses(
+        state.query!,
+        page: page,
+        pageSize: _itemsPerPage,
+        filterByType: filterByType,
+        filterByTopic: filterByTopic,
+        sortBy: sortBy,
+      );
+    } else {
+      return _coursePackage.getCourses(
+        page: page,
+        pageSize: _itemsPerPage,
+        filterByType: filterByType,
+        filterByTopic: filterByTopic,
+        sortBy: sortBy,
+      );
+    }
   }
 }

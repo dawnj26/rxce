@@ -10,6 +10,7 @@ abstract class CourseListState with _$CourseListState {
     @Default(SortOption.aToZliveFirst) SortOption sortOption,
     CourseType? filterByType,
     CourseCategory? filterByTopic,
+    String? query,
     String? errorMessage,
   }) = _Initial;
 }
