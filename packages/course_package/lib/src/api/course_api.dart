@@ -91,6 +91,12 @@ class CourseApi {
         // Live courses first (true = 1, false = 0, so we invert)
         if (a.isLive == b.isLive) return 0;
         return a.isLive ? -1 : 1;
+      case CourseSortOption.freeFirst:
+        // Free courses first (price == 0.0)
+        final aIsFree = a.price == 0.0;
+        final bIsFree = b.price == 0.0;
+        if (aIsFree == bIsFree) return 0;
+        return aIsFree ? -1 : 1;
       case CourseSortOption.hoursAsc:
         return a.ceus.compareTo(b.ceus);
       case CourseSortOption.hoursDesc:
