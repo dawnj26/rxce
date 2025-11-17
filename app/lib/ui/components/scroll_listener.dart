@@ -4,12 +4,12 @@ class ScrollListener extends StatefulWidget {
   const ScrollListener({
     required this.slivers,
     super.key,
-    this.onLoadMore,
+    this.onScrollEnd,
     this.threshold = 0.9,
     this.physics,
   });
 
-  final void Function()? onLoadMore;
+  final void Function()? onScrollEnd;
   final List<Widget> slivers;
   final double threshold;
   final ScrollPhysics? physics;
@@ -24,7 +24,7 @@ class _ScrollListenerState extends State<ScrollListener> {
   @override
   void initState() {
     super.initState();
-    if (widget.onLoadMore != null) {
+    if (widget.onScrollEnd != null) {
       _scrollController.addListener(_onScroll);
     }
   }
@@ -53,7 +53,7 @@ class _ScrollListenerState extends State<ScrollListener> {
 
   void _onScroll() {
     if (_isBottom) {
-      widget.onLoadMore?.call();
+      widget.onScrollEnd?.call();
     }
   }
 }
