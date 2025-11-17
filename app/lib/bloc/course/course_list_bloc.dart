@@ -27,7 +27,6 @@ class CourseListBloc extends Bloc<CourseListEvent, CourseListState> {
         const Duration(milliseconds: 300),
       ),
     );
-    on<_SortChanged>(_onSortChanged);
     on<_FilterChanged>(_onFilterChanged);
   }
 
@@ -47,6 +46,7 @@ class CourseListBloc extends Bloc<CourseListEvent, CourseListState> {
         filterByTopic: state.filterByTopic,
         sortBy: state.sortOption.options,
       );
+
       emit(
         state.copyWith(
           status: LoadingStatus.success,
@@ -97,21 +97,6 @@ class CourseListBloc extends Bloc<CourseListEvent, CourseListState> {
         ),
       );
     }
-  }
-
-  FutureOr<void> _onSortChanged(
-    _SortChanged event,
-    Emitter<CourseListState> emit,
-  ) {
-    emit(
-      state.copyWith(
-        sortOptions: event.sortOptions,
-        currentPage: 1,
-        hasReachedMax: false,
-        courses: [],
-      ),
-    );
-    add(const CourseListEvent.started());
   }
 
   FutureOr<void> _onFilterChanged(
