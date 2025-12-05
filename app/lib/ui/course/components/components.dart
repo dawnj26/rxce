@@ -1,5 +1,11 @@
+export 'category_filter_card.dart';
+export 'category_filter_list.dart';
+export 'course_filter_modal.dart';
 export 'course_item_card.dart';
 export 'course_type_badge.dart';
+export 'course_type_filter_card.dart';
+export 'course_type_filter_grid.dart';
 export 'difficulty_badge.dart';
 export 'free_badge.dart';
+export 'search_suggestion_tile.dart';
 export 'text_badge.dart';

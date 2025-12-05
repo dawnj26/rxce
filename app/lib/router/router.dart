@@ -1,6 +1,6 @@
-import 'package:app/ui/course/course.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/widgets.dart';
+import 'package:rxce/ui/course/course.dart';
 
 part 'router.gr.dart';
 

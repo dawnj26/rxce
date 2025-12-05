@@ -1,6 +1,6 @@
-import 'package:app/l10n/l10n.dart';
-import 'package:app/router/router.dart';
 import 'package:flutter/material.dart';
+import 'package:rxce/l10n/l10n.dart';
+import 'package:rxce/router/router.dart';
 
 class App extends StatefulWidget {
   const App({super.key});

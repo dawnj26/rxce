@@ -1,6 +1,6 @@
-import 'package:app/ui/course/components/course_type_filter_card.dart';
 import 'package:course_package/course_package.dart';
 import 'package:flutter/material.dart';
+import 'package:rxce/ui/course/components/components.dart';
 
 class CourseTypeFilterGrid extends StatelessWidget {
   const CourseTypeFilterGrid({

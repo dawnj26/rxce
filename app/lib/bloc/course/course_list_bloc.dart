@@ -1,15 +1,15 @@
 import 'dart:async';
 
-import 'package:app/shared/loading_status.dart';
-import 'package:app/shared/stream.dart';
-import 'package:app/ui/course/models/sort_option.dart';
 import 'package:bloc/bloc.dart';
 import 'package:course_package/course_package.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:rxce/shared/loading_status.dart';
+import 'package:rxce/shared/stream.dart';
+import 'package:rxce/ui/course/models/sort_option.dart';
 
+part 'course_list_bloc.freezed.dart';
 part 'course_list_event.dart';
 part 'course_list_state.dart';
-part 'course_list_bloc.freezed.dart';
 
 class CourseListBloc extends Bloc<CourseListEvent, CourseListState> {
   CourseListBloc({

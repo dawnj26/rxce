@@ -1,9 +1,9 @@
-import 'package:app/bloc/course/search/course_search_bloc.dart';
-import 'package:app/shared/loading_status.dart';
-import 'package:app/ui/course/components/search_suggestion_tile.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:rxce/bloc/course/search/course_search_bloc.dart';
+import 'package:rxce/shared/loading_status.dart';
+import 'package:rxce/ui/course/components/components.dart';
 
 class CourseSearchScreen extends StatefulWidget {
   const CourseSearchScreen({super.key, this.onFinished});

@@ -1,9 +1,8 @@
-import 'package:app/ui/components/select_card.dart';
-import 'package:app/ui/course/components/category_filter_list.dart';
-import 'package:app/ui/course/components/course_type_filter_grid.dart';
-import 'package:app/ui/course/models/sort_option.dart';
 import 'package:course_package/course_package.dart';
 import 'package:flutter/material.dart';
+import 'package:rxce/ui/components/components.dart';
+import 'package:rxce/ui/course/components/components.dart';
+import 'package:rxce/ui/course/models/sort_option.dart';
 
 class CourseFilterModal extends StatefulWidget {
   const CourseFilterModal({

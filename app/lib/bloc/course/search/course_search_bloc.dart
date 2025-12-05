@@ -1,14 +1,14 @@
 import 'dart:async';
 
-import 'package:app/shared/loading_status.dart';
-import 'package:app/shared/stream.dart';
 import 'package:bloc/bloc.dart';
 import 'package:course_package/course_package.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:rxce/shared/loading_status.dart';
+import 'package:rxce/shared/stream.dart';
 
+part 'course_search_bloc.freezed.dart';
 part 'course_search_event.dart';
 part 'course_search_state.dart';
-part 'course_search_bloc.freezed.dart';
 
 class CourseSearchBloc extends Bloc<CourseSearchEvent, CourseSearchState> {
   CourseSearchBloc({required CoursePackage coursePackage})

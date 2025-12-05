@@ -1,6 +1,6 @@
-import 'package:app/ui/components/select_card.dart';
 import 'package:course_package/course_package.dart';
 import 'package:flutter/material.dart';
+import 'package:rxce/ui/components/components.dart';
 
 class CategoryFilterCard extends StatelessWidget {
   const CategoryFilterCard({
