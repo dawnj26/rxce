@@ -1,7 +1,14 @@
 import 'package:course_package/src/enums/enums.dart';
 import 'package:course_package/src/models/models.dart';
 
+/// {@template course_api}
+/// API client for course-related operations.
+///
+/// Provides methods to fetch, search, and
+/// filter courses with pagination support.
+/// {@endtemplate}
 class CourseApi {
+  /// Creates a new instance of [CourseApi].
   const CourseApi();
 
   // Simulated database
@@ -10,7 +17,10 @@ class CourseApi {
   // Search index for scalable suggestions
   static final Map<String, Set<String>> _searchIndex = _buildSearchIndex();
 
-  /// Fetch courses with pagination
+  /// Fetches courses with optional filtering and sorting.
+  ///
+  /// Returns a paginated response containing courses matching the criteria.
+  /// Defaults to page 1 with 10 items per page.
   Future<PaginatedResponse<CourseItem>> getCourses({
     int page = 1,
     int pageSize = 10,
@@ -60,7 +70,8 @@ class CourseApi {
     );
   }
 
-  /// Compare two courses using multiple sort criteria
+  /// Compares two courses using multiple sort criteria.
+  ///
   /// Returns 0 if equal, negative if a < b, positive if a > b
   int _compareWithMultipleCriteria(
     CourseItem a,
@@ -76,7 +87,7 @@ class CourseApi {
     return 0;
   }
 
-  /// Compare two courses by a single criterion
+  /// Compares two courses by a single sort criterion.
   int _compareBySingleCriteria(
     CourseItem a,
     CourseItem b,
@@ -108,7 +119,9 @@ class CourseApi {
     }
   }
 
-  /// Fetch a single course by ID
+  /// Fetches a single course by its ID.
+  ///
+  /// Returns the course if found, or null if not found.
   Future<CourseItem?> getCourseById(String id) async {
     await Future<void>.delayed(const Duration(milliseconds: 300));
 
@@ -122,7 +135,10 @@ class CourseApi {
     }
   }
 
-  /// Search courses by title or description
+  /// Searches courses by title or description.
+  ///
+  /// Returns paginated results matching the query
+  /// with optional filters and sorting.
   Future<PaginatedResponse<CourseItem>> searchCourses(
     String query, {
     int page = 1,
@@ -176,7 +192,9 @@ class CourseApi {
     );
   }
 
-  /// Get featured courses (free for members or on sale)
+  /// Fetches featured courses (free for members or discounted).
+  ///
+  /// Returns up to [limit] featured courses.
   Future<List<CourseItem>> getFeaturedCourses({int limit = 5}) async {
     await Future<void>.delayed(const Duration(milliseconds: 300));
 
@@ -186,8 +204,10 @@ class CourseApi {
         .toList();
   }
 
-  /// Get search suggestions based on partial query
-  /// Returns up to [limit] suggestions ranked by relevance
+  /// Gets search suggestions based on a partial query.
+  ///
+  /// Returns up to [limit] suggestions ranked by relevance.
+  /// Requires at least 2 characters in the query.
   Future<List<String>> getSearchSuggestions(
     String query, {
     int limit = 10,
@@ -254,8 +274,9 @@ class CourseApi {
     return sortedSuggestions.take(limit).map((e) => e.key).toList();
   }
 
-  /// Build inverted index for fast search suggestions
-  /// Maps terms to course IDs that contain them
+  /// Builds an inverted search index for fast suggestions.
+  ///
+  /// Maps searchable terms to course IDs containing them.
   static Map<String, Set<String>> _buildSearchIndex() {
     final index = <String, Set<String>>{};
 
@@ -270,7 +291,7 @@ class CourseApi {
     return index;
   }
 
-  /// Extract searchable terms from a course
+  /// Extracts searchable terms from a course.
   static Set<String> _extractSearchTerms(CourseItem course) {
     final terms = <String>{};
 
@@ -305,6 +326,7 @@ class CourseApi {
     return terms;
   }
 
+  /// Generates sample courses for testing.
   static List<CourseItem> _generateSampleCourses() {
     final coursesJson = [
       {
