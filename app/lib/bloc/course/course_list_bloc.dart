@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:api_package/api_package.dart';
 import 'package:bloc/bloc.dart';
 import 'package:course_package/course_package.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
