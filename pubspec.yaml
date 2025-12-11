@@ -3,7 +3,7 @@ description: A starter kit for Flutter applications using BLoC pattern.
 publish_to: none
 
 environment:
-  sdk: ^3.9.0
+  sdk: ^3.10.0
 
 workspace:
   - app
