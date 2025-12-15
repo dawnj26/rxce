@@ -32,3 +32,40 @@ Future<void> showCourseFilterModal({
     },
   );
 }
+
+Future<String?> showStateSelectionSheet(
+  BuildContext context, {
+  String? currentSelection,
+}) async {
+  return showModalBottomSheet<String>(
+    context: context,
+    isScrollControlled: true,
+    shape: const RoundedRectangleBorder(
+      borderRadius: BorderRadius.vertical(top: Radius.circular(16)),
+    ),
+    builder: (context) => SelectionSheet(
+      title: 'Select State',
+      items: CeRequirementData.states,
+      currentSelection: currentSelection,
+      searchHint: 'Search states...',
+    ),
+  );
+}
+
+Future<String?> showProfessionSelectionSheet(
+  BuildContext context, {
+  String? currentSelection,
+}) async {
+  return showModalBottomSheet<String>(
+    context: context,
+    shape: const RoundedRectangleBorder(
+      borderRadius: BorderRadius.vertical(top: Radius.circular(16)),
+    ),
+    builder: (context) => SelectionSheet(
+      title: 'Select Profession',
+      items: CeRequirementData.professions,
+      currentSelection: currentSelection,
+      searchHint: 'Search professions...',
+    ),
+  );
+}
