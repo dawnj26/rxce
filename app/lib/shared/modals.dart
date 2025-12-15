@@ -7,8 +7,8 @@ Future<void> showCourseFilterModal({
   CourseCategory? categoryFilter,
   CourseType? typeFilter,
   VoidCallback? onReset,
-  SortOption sortOption = SortOption.aToZliveFirst,
-  void Function(CourseCategory?, CourseType?, SortOption)? onApply,
+  CourseSortOption sortOption = CourseSortOption.liveFirst,
+  void Function(CourseCategory?, CourseType?, CourseSortOption)? onApply,
 }) async {
   const double borderRadius = 12;
 

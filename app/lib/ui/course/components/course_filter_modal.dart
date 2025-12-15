@@ -2,7 +2,6 @@ import 'package:course_package/course_package.dart';
 import 'package:flutter/material.dart';
 import 'package:rxce/ui/components/components.dart';
 import 'package:rxce/ui/course/components/components.dart';
-import 'package:rxce/ui/course/models/sort_option.dart';
 
 class CourseFilterModal extends StatefulWidget {
   const CourseFilterModal({
@@ -11,14 +10,15 @@ class CourseFilterModal extends StatefulWidget {
     this.selectedType,
     this.onReset,
     this.onApply,
-    this.selectedSortOption = SortOption.aToZliveFirst,
+    this.selectedSortOption = CourseSortOption.liveFirst,
   });
 
   final CourseCategory? selectedCategory;
   final CourseType? selectedType;
-  final SortOption selectedSortOption;
+  final CourseSortOption selectedSortOption;
   final void Function()? onReset;
-  final void Function(CourseCategory? c, CourseType? t, SortOption s)? onApply;
+  final void Function(CourseCategory? c, CourseType? t, CourseSortOption s)?
+  onApply;
 
   @override
   State<CourseFilterModal> createState() => _CourseFilterModalState();
@@ -27,7 +27,7 @@ class CourseFilterModal extends StatefulWidget {
 class _CourseFilterModalState extends State<CourseFilterModal> {
   late CourseCategory? _category;
   late CourseType? _type;
-  late SortOption _sortOption;
+  late CourseSortOption _sortOption;
   late final List<CourseCategory> _categories;
 
   @override
@@ -103,7 +103,7 @@ class _CourseFilterModalState extends State<CourseFilterModal> {
                         ),
                         Builder(
                           builder: (c) {
-                            const sortOptions = SortOption.values;
+                            const sortOptions = CourseSortOption.values;
 
                             return ListView.builder(
                               padding: const EdgeInsets.fromLTRB(
