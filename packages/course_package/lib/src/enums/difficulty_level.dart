@@ -8,7 +8,8 @@ enum DifficultyLevel {
   intermediate,
 
   /// Suitable for experienced learners tackling complex concepts.
-  advanced;
+  advanced
+  ;
 
   /// Returns the human-readable label for this difficulty level.
   String get label {
@@ -19,6 +20,20 @@ enum DifficultyLevel {
         return 'Intermediate';
       case DifficultyLevel.advanced:
         return 'Advanced';
+    }
+  }
+
+  /// Converts a string to the corresponding [DifficultyLevel].
+  static DifficultyLevel fromString(String level) {
+    switch (level.toLowerCase()) {
+      case 'beginner':
+        return DifficultyLevel.beginner;
+      case 'intermediate':
+        return DifficultyLevel.intermediate;
+      case 'advanced':
+        return DifficultyLevel.advanced;
+      default:
+        throw ArgumentError('Unknown difficulty level: $level');
     }
   }
 }
