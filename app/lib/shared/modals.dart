@@ -1,7 +1,6 @@
 import 'package:course_package/course_package.dart';
 import 'package:flutter/material.dart';
-import 'package:rxce/ui/course/components/course_filter_modal.dart';
-import 'package:rxce/ui/course/models/sort_option.dart';
+import 'package:rxce/ui/course/components/components.dart';
 
 Future<void> showCourseFilterModal({
   required BuildContext context,
