@@ -1,9 +1,6 @@
-import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rxce/bloc/course/search/course_search_bloc.dart';
-import 'package:rxce/shared/loading_status.dart';
-import 'package:rxce/ui/course/components/components.dart';
 
 class CourseSearchScreen extends StatefulWidget {
   const CourseSearchScreen({super.key, this.onFinished});
@@ -38,7 +35,9 @@ class _CourseSearchScreenState extends State<CourseSearchScreen> {
             border: InputBorder.none,
           ),
           onSubmitted: (value) {
-            if (value.isEmpty) {
+            final v = value.trim();
+
+            if (v.isEmpty) {
               _focusNode.unfocus();
               return;
             }
@@ -48,7 +47,7 @@ class _CourseSearchScreenState extends State<CourseSearchScreen> {
           },
           onChanged: (value) {
             context.read<CourseSearchBloc>().add(
-              CourseSearchEvent.queryChanged(value),
+              CourseSearchEvent.queryChanged(value.trim()),
             );
           },
         ),
