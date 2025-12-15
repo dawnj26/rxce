@@ -6,7 +6,6 @@ import 'package:course_package/course_package.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:rxce/shared/loading_status.dart';
 import 'package:rxce/shared/stream.dart';
-import 'package:rxce/ui/course/models/sort_option.dart';
 
 part 'course_list_bloc.freezed.dart';
 part 'course_list_event.dart';
@@ -15,11 +14,13 @@ part 'course_list_state.dart';
 class CourseListBloc extends Bloc<CourseListEvent, CourseListState> {
   CourseListBloc({
     required CoursePackage coursePackage,
+    CeRequirement? ceRequirement,
     String? query,
   }) : _coursePackage = coursePackage,
        super(
          _Initial(
            query: query,
+           ceRequirement: ceRequirement,
          ),
        ) {
     on<_Started>(_onStarted);
@@ -30,10 +31,11 @@ class CourseListBloc extends Bloc<CourseListEvent, CourseListState> {
       ),
     );
     on<_FilterChanged>(_onFilterChanged);
+    on<_CeRequirementChanged>(_onCeRequirementChanged);
   }
 
   final CoursePackage _coursePackage;
-  final int _itemsPerPage = 10;
+  final int _itemsPerPage = 16;
 
   Future<void> _onStarted(
     _Started event,
@@ -46,7 +48,9 @@ class CourseListBloc extends Bloc<CourseListEvent, CourseListState> {
         page: 1,
         filterByType: state.filterByType,
         filterByTopic: state.filterByTopic,
-        sortBy: state.sortOption.options,
+        sortBy: state.sortOption,
+        query: state.query,
+        ceRequirement: state.ceRequirement,
       );
 
       emit(
@@ -78,7 +82,9 @@ class CourseListBloc extends Bloc<CourseListEvent, CourseListState> {
         page: nextPage,
         filterByType: state.filterByType,
         filterByTopic: state.filterByTopic,
-        sortBy: state.sortOption.options,
+        sortBy: state.sortOption,
+        query: state.query,
+        ceRequirement: state.ceRequirement,
       );
 
       final hasReachedMax = response.items.isEmpty || !response.hasMore;
@@ -115,10 +121,9 @@ class CourseListBloc extends Bloc<CourseListEvent, CourseListState> {
       state.copyWith(
         filterByTopic: event.filterByTopic,
         filterByType: event.filterByType,
-        sortOption: event.sortOption ?? state.sortOption,
+        sortOption: event.sortOption ?? CourseSortOption.liveFirst,
         currentPage: 1,
         hasReachedMax: false,
-        courses: [],
       ),
     );
     add(const CourseListEvent.started());
@@ -128,25 +133,36 @@ class CourseListBloc extends Bloc<CourseListEvent, CourseListState> {
     required int page,
     CourseType? filterByType,
     CourseCategory? filterByTopic,
-    List<CourseSortOption>? sortBy,
+    CourseSortOption? sortBy,
+    String? query,
+    CeRequirement? ceRequirement,
   }) {
-    if (state.query != null && state.query!.isNotEmpty) {
-      return _coursePackage.searchCourses(
-        state.query!,
-        page: page,
-        pageSize: _itemsPerPage,
-        filterByType: filterByType,
-        filterByTopic: filterByTopic,
-        sortBy: sortBy,
-      );
-    } else {
-      return _coursePackage.getCourses(
-        page: page,
-        pageSize: _itemsPerPage,
-        filterByType: filterByType,
-        filterByTopic: filterByTopic,
-        sortBy: sortBy,
-      );
+    return _coursePackage.getCourses(
+      page: page,
+      pageSize: _itemsPerPage,
+      filterByType: filterByType,
+      filterByTopic: filterByTopic,
+      sortBy: sortBy,
+      query: query,
+      ceRequirement: ceRequirement,
+    );
+  }
+
+  FutureOr<void> _onCeRequirementChanged(
+    _CeRequirementChanged event,
+    Emitter<CourseListState> emit,
+  ) async {
+    if (event.ceRequirement == state.ceRequirement) {
+      return;
     }
+
+    emit(
+      state.copyWith(
+        ceRequirement: event.ceRequirement,
+        currentPage: 1,
+        hasReachedMax: false,
+      ),
+    );
+    add(const CourseListEvent.started());
   }
 }

@@ -7,9 +7,10 @@ abstract class CourseListState with _$CourseListState {
     @Default([]) List<CourseItem> courses,
     @Default(1) int currentPage,
     @Default(false) bool hasReachedMax,
-    @Default(SortOption.aToZliveFirst) SortOption sortOption,
+    @Default(CourseSortOption.liveFirst) CourseSortOption sortOption,
     CourseType? filterByType,
     CourseCategory? filterByTopic,
+    CeRequirement? ceRequirement,
     String? query,
     String? errorMessage,
   }) = _Initial;
