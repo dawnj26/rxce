@@ -76,38 +76,8 @@ class _CourseSearchScreenState extends State<CourseSearchScreen> {
           ),
         ],
       ),
-      body: BlocBuilder<CourseSearchBloc, CourseSearchState>(
-        builder: (context, state) {
-          switch (state.status) {
-            case LoadingStatus.initial:
-              return const Center(
-                child: Text('Start typing to search courses.'),
-              );
-            case LoadingStatus.loading:
-              return const Center(child: CircularProgressIndicator());
-            case LoadingStatus.success:
-              if (state.suggestions.isEmpty) {
-                return const Center(child: Text('No suggestions found.'));
-              }
-
-              return ListView.builder(
-                itemCount: state.suggestions.length,
-                itemBuilder: (context, index) {
-                  final suggestion = state.suggestions[index];
-
-                  return SearchSuggestionTile(
-                    suggestion: suggestion,
-                    onTap: () {
-                      context.router.pop();
-                      widget.onFinished?.call(suggestion);
-                    },
-                  );
-                },
-              );
-            case LoadingStatus.failure:
-              return Center(child: Text('Error: ${state.errorMessage}'));
-          }
-        },
+      body: const Center(
+        child: Text('Start typing to search courses.'),
       ),
     );
   }
