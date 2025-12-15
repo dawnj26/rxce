@@ -42,8 +42,7 @@ class _CourseSearchScreenState extends State<CourseSearchScreen> {
               return;
             }
 
-            context.router.pop();
-            widget.onFinished?.call(value);
+            widget.onFinished?.call(v);
           },
           onChanged: (value) {
             context.read<CourseSearchBloc>().add(
