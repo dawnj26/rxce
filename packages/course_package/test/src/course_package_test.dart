@@ -22,7 +22,7 @@ void main() {
       test('delegates to api with correct parameters', () async {
         final mockResponse = PaginatedResponse<CourseItem>(
           items: [],
-          total: 0,
+          totalCount: 0,
           page: 1,
           pageSize: 10,
         );
@@ -57,7 +57,7 @@ void main() {
       test('uses default parameters when not specified', () async {
         final mockResponse = PaginatedResponse<CourseItem>(
           items: [],
-          total: 0,
+          totalCount: 0,
           page: 1,
           pageSize: 10,
         );

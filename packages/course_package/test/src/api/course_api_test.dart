@@ -7,7 +7,7 @@ void main() {
     late CourseApi courseApi;
 
     setUp(() {
-      courseApi = const CourseApi();
+      courseApi = CourseApi();
     });
 
     group('getCourses', () {
@@ -17,7 +17,7 @@ void main() {
         expect(result.items.length, 10);
         expect(result.page, 1);
         expect(result.pageSize, 10);
-        expect(result.total, greaterThan(0));
+        expect(result.totalCount, greaterThan(0));
       });
 
       test('respects page and pageSize parameters', () async {
@@ -73,7 +73,7 @@ void main() {
 
       test('handles last page correctly', () async {
         final firstPage = await courseApi.getCourses(pageSize: 100);
-        final totalPages = (firstPage.total / 100).ceil();
+        final totalPages = (firstPage.totalCount / 100).ceil();
 
         final lastPage = await courseApi.getCourses(
           page: totalPages,

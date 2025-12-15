@@ -9,16 +9,16 @@ class PaginatedResponse<T> {
   /// the current page contains the last items.
   PaginatedResponse({
     required this.items,
-    required this.total,
+    required this.totalCount,
     required this.page,
     required this.pageSize,
-  }) : hasMore = (page * pageSize) < total;
+  }) : hasMore = (page * pageSize) < totalCount;
 
   /// The list of items in the current page.
   final List<T> items;
 
   /// The total number of items available across all pages.
-  final int total;
+  final int totalCount;
 
   /// The current page number (1-indexed).
   final int page;
