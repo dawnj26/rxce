@@ -1,5 +1,7 @@
 export 'category_filter_card.dart';
 export 'category_filter_list.dart';
+export 'ce_selection_sheet.dart';
+export 'ce_selector_bar.dart';
 export 'course_filter_modal.dart';
 export 'course_item_card.dart';
 export 'course_type_badge.dart';

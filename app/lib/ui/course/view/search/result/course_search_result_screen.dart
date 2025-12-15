@@ -1,7 +1,8 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:course_package/course_package.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:rxce/bloc/course/course_list_bloc.dart';
+import 'package:rxce/bloc/course/list/course_list_bloc.dart';
 import 'package:rxce/router/router.dart';
 import 'package:rxce/shared/loading_status.dart';
 import 'package:rxce/shared/modals.dart';
@@ -61,7 +62,10 @@ class CourseSearchResultScreen extends StatelessWidget {
 
                       final activeFiltersCount =
                           (state.filterByTopic != null ? 1 : 0) +
-                          (state.filterByType != null ? 1 : 0);
+                          (state.filterByType != null ? 1 : 0) +
+                          (state.sortOption != CourseSortOption.liveFirst
+                              ? 1
+                              : 0);
 
                       return FilterButton(
                         activeFiltersCount: activeFiltersCount,
@@ -99,20 +103,8 @@ class CourseSearchResultScreen extends StatelessWidget {
                       itemCount: state.hasReachedMax
                           ? state.courses.length
                           : state.courses.length + 1,
-                      itemBuilder: (context, index) {
-                        if (index >= state.courses.length) {
-                          return const Padding(
-                            padding: EdgeInsets.symmetric(vertical: 16),
-                            child: Center(child: CircularProgressIndicator()),
-                          );
-                        }
-
-                        final course = state.courses[index];
-                        return CourseItemCard(
-                          course: course,
-                          onTap: () {},
-                        );
-                      },
+                      itemBuilder: (context, index) =>
+                          _buildCourseCard(context, index, state.courses),
                     ),
                   );
               }
@@ -120,6 +112,25 @@ class CourseSearchResultScreen extends StatelessWidget {
           ),
         ],
       ),
+    );
+  }
+
+  Widget _buildCourseCard(
+    BuildContext context,
+    int index,
+    List<CourseItem> courses,
+  ) {
+    if (index >= courses.length) {
+      return const Padding(
+        padding: EdgeInsets.symmetric(vertical: 16),
+        child: Center(child: CircularProgressIndicator()),
+      );
+    }
+
+    final course = courses[index];
+    return CourseItemCard(
+      course: course,
+      onTap: () {},
     );
   }
 

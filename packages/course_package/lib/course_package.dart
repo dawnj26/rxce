@@ -2,5 +2,6 @@
 library;
 
 export 'src/course_package.dart';
+export 'src/data/data.dart';
 export 'src/enums/enums.dart';
 export 'src/models/models.dart';

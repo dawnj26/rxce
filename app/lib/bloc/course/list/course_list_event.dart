@@ -10,6 +10,9 @@ class CourseListEvent with _$CourseListEvent {
   const factory CourseListEvent.filterChanged({
     CourseCategory? filterByTopic,
     CourseType? filterByType,
-    SortOption? sortOption,
+    CourseSortOption? sortOption,
   }) = _FilterChanged;
+  const factory CourseListEvent.ceRequirementChanged(
+    CeRequirement? ceRequirement,
+  ) = _CeRequirementChanged;
 }

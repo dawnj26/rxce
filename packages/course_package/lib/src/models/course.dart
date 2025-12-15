@@ -1,3 +1,6 @@
+//
+// ignore_for_file: invalid_annotation_target
+
 import 'package:course_package/src/enums/course_category.dart';
 import 'package:course_package/src/enums/course_type.dart';
 import 'package:course_package/src/enums/difficulty_level.dart';
@@ -16,16 +19,17 @@ abstract class Course with _$Course {
 
   /// Creates a course item with the specified details.
   factory Course.item({
-    required String id,
-    required String title,
-    required String description,
+    required int id,
+    required String testNumber,
+    required String testName,
+    required String testNameShort,
+    required double credits,
+    required String uan,
     required DateTime dateAdded,
     required DateTime startDate,
-    required double ceus,
-    required double price,
-    required List<String> targetAudiences,
-    required CourseCategory topic,
-    required DifficultyLevel difficultyLevel,
+    required DateTime expires,
+    @JsonKey(name: 'courseDescription') required String description,
+    @JsonKey(name: 'difficultyLevel') required String difficulty,
     @Default(false) bool isLive,
     @Default(false) bool isPrerecordedWebinar,
     @Default(false) bool isGamifiedCourse,
@@ -50,6 +54,9 @@ abstract class Course with _$Course {
     }
   }
 
-  /// Returns true if the course price is 0 or less.
-  bool get isFree => price <= 0.0;
+  /// Converts the UAN string to [CourseCategory] enum.
+  CourseCategory get topic => CourseCategory.fromUan(uan);
+
+  /// Converts the string difficulty level to [DifficultyLevel] enum.
+  DifficultyLevel get difficultyLevel => DifficultyLevel.fromString(difficulty);
 }

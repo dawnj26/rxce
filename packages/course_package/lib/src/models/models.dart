@@ -1,2 +1,2 @@
+export 'ce_requirement.dart';
 export 'course.dart';
-export 'paginated_response.dart';

@@ -273,6 +273,22 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.4.1"
+  dio:
+    dependency: transitive
+    description:
+      name: dio
+      sha256: d90ee57923d1828ac14e492ca49440f65477f4bb1263575900be731a3dac66a9
+      url: "https://pub.dev"
+    source: hosted
+    version: "5.9.0"
+  dio_web_adapter:
+    dependency: transitive
+    description:
+      name: dio_web_adapter
+      sha256: "7586e476d70caecaf1686d21eee7247ea43ef5c345eab9e0cc3583ff13378d78"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.1.1"
   fake_async:
     dependency: transitive
     description:
@@ -761,26 +777,34 @@ packages:
     dependency: transitive
     description:
       name: talker
-      sha256: "5ab800e29d91ce7728fa218c8a7d46f6c228202ac89af650c3f82cb938a64ba6"
+      sha256: "8ad4e3043055f4ad6131f2362dc8617972f4f9dfad147716ba3f8c025206be06"
       url: "https://pub.dev"
     source: hosted
-    version: "5.1.3"
+    version: "5.1.6"
   talker_bloc_logger:
     dependency: transitive
     description:
       name: talker_bloc_logger
-      sha256: "40c1d7d82369caf6ac7e631796a960d74b6dcfa425ea3c7b5a0a3fadc4480195"
+      sha256: deb77dd9ec14d58f8dc6dcdfa2b43d6cf4f4bd62b20e8891acce968c5295253f
       url: "https://pub.dev"
     source: hosted
-    version: "5.1.3"
+    version: "5.1.6"
+  talker_dio_logger:
+    dependency: transitive
+    description:
+      name: talker_dio_logger
+      sha256: "2612d5d2482540761f9969e1ea101f458c4b6ef3a04f8f4c6a8e55e8fcaeaffd"
+      url: "https://pub.dev"
+    source: hosted
+    version: "5.1.6"
   talker_logger:
     dependency: transitive
     description:
       name: talker_logger
-      sha256: bc75612ace4dbb82fbad36181ff27e95b1ee152c719c2fea6b8ac59c4f091cd2
+      sha256: "5377c6bbcf79b95bae8aabbcc198d65bb8f462c4eba3ff03f9be67db7b604f71"
       url: "https://pub.dev"
     source: hosted
-    version: "5.1.3"
+    version: "5.1.6"
   term_glyph:
     dependency: transitive
     description:
@@ -918,5 +942,5 @@ packages:
     source: hosted
     version: "2.2.3"
 sdks:
-  dart: ">=3.9.0 <4.0.0"
-  flutter: ">=3.35.0 <4.0.0"
+  dart: ">=3.10.0 <4.0.0"
+  flutter: ">=3.38.0 <4.0.0"

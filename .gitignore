@@ -111,6 +111,9 @@ app.*.map.json
 !.idea/dictionaries/
 !.idea/runConfigurations/
 
+# Melos run configuration
+.idea/runConfigurations/melos_*.xml
+
 # Generated l10n files
 app/lib/l10n/gen/
 

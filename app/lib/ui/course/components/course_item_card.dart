@@ -60,7 +60,7 @@ class CourseItemCard extends StatelessWidget {
                   bottom: 1,
                   right: 1,
                   child: _Ceu(
-                    ceus: course.ceus,
+                    ceus: course.credits,
                   ),
                 ),
               ],
@@ -165,7 +165,7 @@ class _CourseItemHeader extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         RichText(
-          text: TextSpan(text: course.title, style: textTheme.titleSmall),
+          text: TextSpan(text: course.testName, style: textTheme.titleSmall),
         ),
         const SizedBox(height: 8),
         Wrap(
@@ -174,12 +174,6 @@ class _CourseItemHeader extends StatelessWidget {
             CourseTypeBadge(type: course.courseType),
             const SizedBox(width: 8),
             DifficultyBadge(level: course.difficultyLevel),
-            if (course.isFree) ...[
-              const SizedBox(width: 8),
-              FreeBadge(
-                membersOnly: course.isFreeForMembers,
-              ),
-            ],
           ],
         ),
       ],
