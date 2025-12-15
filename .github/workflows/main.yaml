@@ -20,7 +20,7 @@ jobs:
     uses: ./.github/workflows/build.yaml
     with:
       flutter_channel: stable
-      flutter_version: 3.35.x
+      flutter_version: 3.38.x
       setup: melos run generate
 
   spell-check:
