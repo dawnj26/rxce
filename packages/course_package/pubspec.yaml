@@ -1,5 +1,5 @@
 name: course_package
-description: A Very Good Project created by Very Good CLI.
+description: A package for managing course data and models.
 version: 0.1.0+1
 publish_to: none
 
