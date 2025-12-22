@@ -1,5 +1,5 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:flutter/widgets.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rxce/bloc/course/search/course_search_bloc.dart';
 import 'package:rxce/ui/course/view/search/course_search_screen.dart';

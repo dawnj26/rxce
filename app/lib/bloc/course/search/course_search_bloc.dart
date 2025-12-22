@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:rxce/shared/loading_status.dart';
+import 'package:rxce/shared/constants/constants.dart';
 
 part 'course_search_bloc.freezed.dart';
 part 'course_search_event.dart';

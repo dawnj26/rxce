@@ -4,8 +4,8 @@ import 'package:api_package/api_package.dart';
 import 'package:bloc/bloc.dart';
 import 'package:course_package/course_package.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:rxce/shared/loading_status.dart';
-import 'package:rxce/shared/stream.dart';
+import 'package:rxce/shared/constants/constants.dart';
+import 'package:rxce/shared/utils/utils.dart';
 
 part 'course_list_bloc.freezed.dart';
 part 'course_list_event.dart';

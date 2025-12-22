@@ -1,7 +1,7 @@
 import 'package:course_package/course_package.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:rxce/ui/components/components.dart';
+import 'package:rxce/shared/components/components.dart';
 import 'package:rxce/ui/course/components/components.dart';
 
 class CourseTypeFilterCard extends StatelessWidget {
