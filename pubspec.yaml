@@ -1,5 +1,5 @@
 name: rxce_monorepo
-description: A starter kit for Flutter applications using BLoC pattern.
+description: A collection of packages for the RXCE application.
 publish_to: none
 
 environment:
