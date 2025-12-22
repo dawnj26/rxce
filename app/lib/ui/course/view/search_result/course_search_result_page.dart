@@ -3,7 +3,7 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rxce/bloc/ce/ce_bloc.dart';
 import 'package:rxce/bloc/course/list/course_list_bloc.dart';
-import 'package:rxce/ui/course/view/search/result/course_search_result_screen.dart';
+import 'package:rxce/ui/course/view/search_result/course_search_result_screen.dart';
 
 @RoutePage()
 class CourseSearchResultPage extends StatelessWidget

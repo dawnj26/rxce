@@ -4,9 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rxce/bloc/course/list/course_list_bloc.dart';
 import 'package:rxce/router/router.dart';
-import 'package:rxce/shared/loading_status.dart';
-import 'package:rxce/shared/modals.dart';
-import 'package:rxce/ui/components/components.dart';
+import 'package:rxce/shared/components/components.dart';
+import 'package:rxce/shared/constants/constants.dart';
+import 'package:rxce/shared/utils/utils.dart';
 import 'package:rxce/ui/course/components/components.dart';
 
 class CourseSearchResultScreen extends StatelessWidget {
