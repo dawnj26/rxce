@@ -27,6 +27,7 @@ dependencies:
   talker: ^5.1.6
   talker_bloc_logger: ^5.1.6
   talker_dio_logger: ^5.1.6
+  theme_package: any
 
 dev_dependencies:
   auto_route_generator: ^10.2.4
