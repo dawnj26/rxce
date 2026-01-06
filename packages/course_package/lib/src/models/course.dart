@@ -1,7 +1,7 @@
 //
 // ignore_for_file: invalid_annotation_target
 
-import 'package:course_package/src/enums/course_category.dart';
+import 'package:course_package/src/enums/course_topic.dart';
 import 'package:course_package/src/enums/course_type.dart';
 import 'package:course_package/src/enums/difficulty_level.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
