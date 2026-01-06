@@ -13,11 +13,11 @@ class CourseFilterModal extends StatefulWidget {
     this.selectedSortOption = CourseSortOption.liveFirst,
   });
 
-  final CourseCategory? selectedCategory;
+  final CourseTopic? selectedCategory;
   final CourseType? selectedType;
   final CourseSortOption selectedSortOption;
   final void Function()? onReset;
-  final void Function(CourseCategory? c, CourseType? t, CourseSortOption s)?
+  final void Function(CourseTopic? c, CourseType? t, CourseSortOption s)?
   onApply;
 
   @override
@@ -25,10 +25,10 @@ class CourseFilterModal extends StatefulWidget {
 }
 
 class _CourseFilterModalState extends State<CourseFilterModal> {
-  late CourseCategory? _category;
+  late CourseTopic? _category;
   late CourseType? _type;
   late CourseSortOption _sortOption;
-  late final List<CourseCategory> _categories;
+  late final List<CourseTopic> _categories;
 
   @override
   void initState() {
@@ -36,7 +36,7 @@ class _CourseFilterModalState extends State<CourseFilterModal> {
 
     _category = widget.selectedCategory;
     _type = widget.selectedType;
-    _categories = CourseCategory.values;
+    _categories = CourseTopic.values;
     _sortOption = widget.selectedSortOption;
   }
 

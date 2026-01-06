@@ -40,7 +40,7 @@ void main() {
           page: 2,
           pageSize: 20,
           filterByType: CourseType.live,
-          filterByTopic: CourseCategory.drugTherapy,
+          filterByTopic: CourseTopic.drugTherapy,
         );
 
         expect(result, mockResponse);
@@ -49,7 +49,7 @@ void main() {
             page: 2,
             pageSize: 20,
             filterByType: CourseType.live,
-            filterByTopic: CourseCategory.drugTherapy,
+            filterByTopic: CourseTopic.drugTherapy,
           ),
         ).called(1);
       });

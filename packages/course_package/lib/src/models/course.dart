@@ -54,8 +54,8 @@ abstract class Course with _$Course {
     }
   }
 
-  /// Converts the UAN string to [CourseCategory] enum.
-  CourseCategory get topic => CourseCategory.fromUan(uan);
+  /// Converts the UAN string to [CourseTopic] enum.
+  CourseTopic get topic => CourseTopic.fromUan(uan);
 
   /// Converts the string difficulty level to [DifficultyLevel] enum.
   DifficultyLevel get difficultyLevel => DifficultyLevel.fromString(difficulty);

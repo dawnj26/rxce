@@ -9,7 +9,7 @@ abstract class CourseListState with _$CourseListState {
     @Default(false) bool hasReachedMax,
     @Default(CourseSortOption.liveFirst) CourseSortOption sortOption,
     CourseType? filterByType,
-    CourseCategory? filterByTopic,
+    CourseTopic? filterByTopic,
     CeRequirement? ceRequirement,
     String? query,
     String? errorMessage,

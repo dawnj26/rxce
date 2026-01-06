@@ -4,11 +4,11 @@ import 'package:rxce/ui/course/components/components.dart';
 
 Future<void> showCourseFilterModal({
   required BuildContext context,
-  CourseCategory? categoryFilter,
+  CourseTopic? categoryFilter,
   CourseType? typeFilter,
   VoidCallback? onReset,
   CourseSortOption sortOption = CourseSortOption.liveFirst,
-  void Function(CourseCategory?, CourseType?, CourseSortOption)? onApply,
+  void Function(CourseTopic?, CourseType?, CourseSortOption)? onApply,
 }) async {
   const double borderRadius = 12;
 
