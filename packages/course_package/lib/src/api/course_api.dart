@@ -58,8 +58,7 @@ class CourseApi {
         page: pageNumber,
         pageSize: pageSizeResp,
       );
-    } on Exception catch (e) {
-      log('Error fetching courses: $e');
+    } on Exception {
       rethrow;
     }
   }
