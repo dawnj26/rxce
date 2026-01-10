@@ -9,6 +9,7 @@ workspace:
   - app
   - packages/api_package
   - packages/course_package
+  - packages/theme_package
 
 dev_dependencies:
   melos: ^7.1.1

@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:api_package/api_package.dart';
 import 'package:course_package/src/enums/enums.dart';
 import 'package:course_package/src/models/models.dart';
@@ -26,7 +24,7 @@ class CourseApi {
     int page = 1,
     int pageSize = 16,
     CourseType? filterByType,
-    CourseCategory? filterByTopic,
+    CourseTopic? filterByTopic,
     CourseSortOption? sortBy,
     String? query,
     CeRequirement? ceRequirement,
@@ -58,8 +56,7 @@ class CourseApi {
         page: pageNumber,
         pageSize: pageSizeResp,
       );
-    } on Exception catch (e) {
-      log('Error fetching courses: $e');
+    } on Exception {
       rethrow;
     }
   }

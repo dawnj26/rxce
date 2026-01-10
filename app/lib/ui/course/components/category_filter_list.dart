@@ -10,9 +10,9 @@ class CategoryFilterList extends StatelessWidget {
     this.onSelected,
   });
 
-  final List<CourseCategory> categories;
-  final CourseCategory? selected;
-  final void Function(CourseCategory category)? onSelected;
+  final List<CourseTopic> categories;
+  final CourseTopic? selected;
+  final void Function(CourseTopic category)? onSelected;
 
   @override
   Widget build(BuildContext context) {

@@ -19,7 +19,7 @@ class CoursePackage {
     int page = 1,
     int pageSize = 10,
     CourseType? filterByType,
-    CourseCategory? filterByTopic,
+    CourseTopic? filterByTopic,
     CourseSortOption? sortBy,
     String? query,
     CeRequirement? ceRequirement,

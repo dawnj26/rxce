@@ -10,7 +10,7 @@ class CategoryFilterCard extends StatelessWidget {
     super.key,
   });
 
-  final CourseCategory category;
+  final CourseTopic category;
   final bool isSelected;
   final VoidCallback? onTap;
 

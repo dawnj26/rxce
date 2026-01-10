@@ -1,5 +1,5 @@
 /// Represents the topic category of a course.
-enum CourseCategory {
+enum CourseTopic {
   /// Courses on disease management and drug therapy options.
   drugTherapy,
 
@@ -31,23 +31,23 @@ enum CourseCategory {
   /// Returns the human-readable label for this category.
   String get label {
     switch (this) {
-      case CourseCategory.drugTherapy:
+      case CourseTopic.drugTherapy:
         return 'Disease State Management/Drug Therapy';
-      case CourseCategory.hivAidsTherapy:
+      case CourseTopic.hivAidsTherapy:
         return 'HIV/AIDS Therapy';
-      case CourseCategory.law:
+      case CourseTopic.law:
         return 'Law';
-      case CourseCategory.pharmacyAdministration:
+      case CourseTopic.pharmacyAdministration:
         return 'Pharmacy Administration';
-      case CourseCategory.patientSafety:
+      case CourseTopic.patientSafety:
         return 'Patient Safety';
-      case CourseCategory.immunizations:
+      case CourseTopic.immunizations:
         return 'Immunizations';
-      case CourseCategory.compounding:
+      case CourseTopic.compounding:
         return 'Compounding';
-      case CourseCategory.opioids:
+      case CourseTopic.opioids:
         return 'Pain Management/Opioids';
-      case CourseCategory.additional:
+      case CourseTopic.additional:
         return 'Additional Topic Areas';
     }
   }
@@ -55,52 +55,52 @@ enum CourseCategory {
   /// Returns the unique ID associated with this category.
   int get id {
     switch (this) {
-      case CourseCategory.drugTherapy:
+      case CourseTopic.drugTherapy:
         return 1;
-      case CourseCategory.hivAidsTherapy:
+      case CourseTopic.hivAidsTherapy:
         return 2;
-      case CourseCategory.law:
+      case CourseTopic.law:
         return 3;
-      case CourseCategory.pharmacyAdministration:
+      case CourseTopic.pharmacyAdministration:
         return 4;
-      case CourseCategory.patientSafety:
+      case CourseTopic.patientSafety:
         return 5;
-      case CourseCategory.immunizations:
+      case CourseTopic.immunizations:
         return 6;
-      case CourseCategory.compounding:
+      case CourseTopic.compounding:
         return 7;
-      case CourseCategory.opioids:
+      case CourseTopic.opioids:
         return 8;
-      case CourseCategory.additional:
+      case CourseTopic.additional:
         return 9;
     }
   }
 
-  /// Creates a [CourseCategory] from the given UAN string.
-  static CourseCategory fromUan(String uan) {
+  /// Creates a [CourseTopic] from the given UAN string.
+  static CourseTopic fromUan(String uan) {
     // Sample UAN: 0669-0000-22-106-H07-P
     final topic = uan.split('-')[4];
     final topicCode = topic.substring(1);
 
     switch (topicCode) {
       case '01':
-        return CourseCategory.drugTherapy;
+        return CourseTopic.drugTherapy;
       case '02':
-        return CourseCategory.hivAidsTherapy;
+        return CourseTopic.hivAidsTherapy;
       case '03':
-        return CourseCategory.law;
+        return CourseTopic.law;
       case '04':
-        return CourseCategory.pharmacyAdministration;
+        return CourseTopic.pharmacyAdministration;
       case '05':
-        return CourseCategory.patientSafety;
+        return CourseTopic.patientSafety;
       case '06':
-        return CourseCategory.immunizations;
+        return CourseTopic.immunizations;
       case '07':
-        return CourseCategory.compounding;
+        return CourseTopic.compounding;
       case '08':
-        return CourseCategory.opioids;
+        return CourseTopic.opioids;
       case '99':
-        return CourseCategory.additional;
+        return CourseTopic.additional;
       default:
         throw ArgumentError('Invalid UAN for CourseCategory: $uan');
     }

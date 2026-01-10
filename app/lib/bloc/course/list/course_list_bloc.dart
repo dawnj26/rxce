@@ -132,7 +132,7 @@ class CourseListBloc extends Bloc<CourseListEvent, CourseListState> {
   Future<PaginatedResponse<CourseItem>> _fetchCourses({
     required int page,
     CourseType? filterByType,
-    CourseCategory? filterByTopic,
+    CourseTopic? filterByTopic,
     CourseSortOption? sortBy,
     String? query,
     CeRequirement? ceRequirement,

@@ -41,24 +41,24 @@ void main() {
 
       test('filters by course topic', () async {
         final result = await courseApi.getCourses(
-          filterByTopic: CourseCategory.drugTherapy,
+          filterByTopic: CourseTopic.drugTherapy,
         );
 
         expect(result.items.isNotEmpty, true);
         for (final course in result.items) {
-          expect(course.topic, CourseCategory.drugTherapy);
+          expect(course.topic, CourseTopic.drugTherapy);
         }
       });
 
       test('applies multiple filters simultaneously', () async {
         final result = await courseApi.getCourses(
           filterByType: CourseType.recorded,
-          filterByTopic: CourseCategory.drugTherapy,
+          filterByTopic: CourseTopic.drugTherapy,
         );
 
         for (final course in result.items) {
           expect(course.isPrerecordedWebinar, true);
-          expect(course.topic, CourseCategory.drugTherapy);
+          expect(course.topic, CourseTopic.drugTherapy);
         }
       });
 

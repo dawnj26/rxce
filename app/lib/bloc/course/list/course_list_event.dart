@@ -8,7 +8,7 @@ class CourseListEvent with _$CourseListEvent {
     List<CourseSortOption> sortOptions,
   ) = _SortChanged;
   const factory CourseListEvent.filterChanged({
-    CourseCategory? filterByTopic,
+    CourseTopic? filterByTopic,
     CourseType? filterByType,
     CourseSortOption? sortOption,
   }) = _FilterChanged;

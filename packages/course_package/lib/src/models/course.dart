@@ -1,7 +1,7 @@
 //
 // ignore_for_file: invalid_annotation_target
 
-import 'package:course_package/src/enums/course_category.dart';
+import 'package:course_package/src/enums/course_topic.dart';
 import 'package:course_package/src/enums/course_type.dart';
 import 'package:course_package/src/enums/difficulty_level.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -54,8 +54,8 @@ abstract class Course with _$Course {
     }
   }
 
-  /// Converts the UAN string to [CourseCategory] enum.
-  CourseCategory get topic => CourseCategory.fromUan(uan);
+  /// Converts the UAN string to [CourseTopic] enum.
+  CourseTopic get topic => CourseTopic.fromUan(uan);
 
   /// Converts the string difficulty level to [DifficultyLevel] enum.
   DifficultyLevel get difficultyLevel => DifficultyLevel.fromString(difficulty);
