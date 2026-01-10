@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:rxce/l10n/l10n.dart';
 import 'package:rxce/router/router.dart';
+import 'package:theme_package/theme_package.dart';
 
 class App extends StatefulWidget {
   const App({super.key});
@@ -38,9 +39,8 @@ class _AppView extends StatelessWidget {
     return MaterialApp.router(
       routerConfig: router.config(),
       title: 'RxCE',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
-      ),
+      theme: ThemePackage.light,
+      themeMode: ThemeMode.light,
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
     );
