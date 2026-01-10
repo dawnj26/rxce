@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:api_package/api_package.dart';
 import 'package:course_package/src/enums/enums.dart';
 import 'package:course_package/src/models/models.dart';
