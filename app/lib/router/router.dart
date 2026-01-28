@@ -12,12 +12,13 @@ class AppRouter extends RootStackRouter {
     AutoRoute(page: SignInRoute.page, path: '/signin', initial: true),
     AutoRoute(page: RegistrationRoute.page, path: '/signup'),
     AutoRoute(
+      path: '/courses',
       page: CourseRoute.page,
       initial: true,
       children: [
-        AutoRoute(page: CourseListRoute.page, initial: true),
-        AutoRoute(page: CourseSearchRoute.page),
-        AutoRoute(page: CourseSearchResultRoute.page),
+        AutoRoute(page: CourseListRoute.page, initial: true, path: ''),
+        AutoRoute(page: CourseSearchRoute.page, path: 'search'),
+        AutoRoute(page: CourseSearchResultRoute.page, path: 'search/:query'),
       ],
     ),
   ];
