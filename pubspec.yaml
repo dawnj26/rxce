@@ -30,14 +30,15 @@ melos:
       name: Build production APK
       steps:
         - cd app
-        - flutter build apk --release --target lib/main_production.dart --flavor production
-    
+        - flutter build apk --release --target lib/main_production.dart --flavor
+          production
+
     run:dev:
       name: Build development APK
       steps:
         - cd app
         - flutter run --target lib/main_development.dart --flavor development
-    
+
     run:prod:
       name: Build production APK
       steps:
