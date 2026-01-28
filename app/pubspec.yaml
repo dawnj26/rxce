@@ -15,6 +15,7 @@ dependencies:
   bloc: ^9.0.1
   bloc_concurrency: ^0.3.0
   course_package: any
+  email_validator: ^3.0.0
   flutter:
     sdk: flutter
   flutter_bloc: ^9.1.1
@@ -23,6 +24,7 @@ dependencies:
   font_awesome_flutter: ^10.12.0
   freezed_annotation: ^3.1.0
   intl: ^0.20.2
+  lucide_icons_flutter: ^3.1.9
   stream_transform: ^2.1.1
   talker: ^5.1.6
   talker_bloc_logger: ^5.1.6
@@ -43,3 +45,5 @@ dev_dependencies:
 flutter:
   generate: true
   uses-material-design: true
+  assets:
+    - assets/images/
