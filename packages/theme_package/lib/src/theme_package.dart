@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:theme_package/src/themes/themes.dart';
 
 /// {@template theme_package}
