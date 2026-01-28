@@ -26,6 +26,22 @@ class ThemePackage {
         ),
       ),
     ),
+    inputDecorationTheme: InputDecorationTheme(
+      floatingLabelBehavior: FloatingLabelBehavior.never,
+      focusedBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(8),
+        borderSide: BorderSide(
+          color: AppColorTheme.light.primary.shade500,
+          width: 2,
+        ),
+      ),
+      border: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(8),
+        borderSide: BorderSide(
+          color: AppColorTheme.light.neutral.shade300,
+        ),
+      ),
+    ),
     extensions: [
       AppColorTheme.light,
       AppTextTheme.light,
