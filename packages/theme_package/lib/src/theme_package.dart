@@ -9,6 +9,9 @@ class ThemePackage {
 
   /// Default light theme data
   static ThemeData get light => ThemeData.light().copyWith(
+    colorScheme: ColorScheme.fromSeed(
+      seedColor: AppColorTheme.light.primary.shade500,
+    ),
     extensions: [
       AppColorTheme.light,
       AppTextTheme.light,
