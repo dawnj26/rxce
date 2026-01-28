@@ -8,7 +8,10 @@ import 'package:rxce/ui/course/view/search_result/course_search_result_screen.da
 @RoutePage()
 class CourseSearchResultPage extends StatelessWidget
     implements AutoRouteWrapper {
-  const CourseSearchResultPage({required this.query, super.key});
+  const CourseSearchResultPage({
+    @PathParam('query') required this.query,
+    super.key,
+  });
 
   final String query;
 
