@@ -1,7 +1,11 @@
 {
     "@@locale": "en",
-    "counterAppBarTitle": "Counter",
-    "@counterAppBarTitle": {
-        "description": "Text shown in the AppBar of the Counter Page"
+    "loginTitle": "Log In",
+    "@loginTitle": {
+        "description": "Title for the login screen"
+    },
+    "loginSubtitle": "Please login your account",
+    "@loginSubtitle": {
+        "description": "Subtitle for the login screen"
     }
 }

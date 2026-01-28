@@ -1,7 +1,11 @@
 {
     "@@locale": "es",
-    "counterAppBarTitle": "Contador",
-    "@counterAppBarTitle": {
-        "description": "Texto mostrado en la AppBar de la página del contador"
+    "loginTitle": "Iniciar sesión",
+    "@loginTitle": {
+        "description": "Título para la pantalla de inicio de sesión"
+    },
+    "loginSubtitle": "Por favor, inicie sesión en su cuenta",
+    "@loginSubtitle": {
+        "description": "Subtítulo para la pantalla de inicio de sesión"
     }
 }
