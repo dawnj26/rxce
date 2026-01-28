@@ -42,6 +42,7 @@ class ThemePackage {
         ),
       ),
     ),
+    textTheme: GoogleFonts.montserratTextTheme(),
     extensions: [
       AppColorTheme.light,
       AppTextTheme.light,
