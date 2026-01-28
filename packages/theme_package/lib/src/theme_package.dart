@@ -12,6 +12,20 @@ class ThemePackage {
     colorScheme: ColorScheme.fromSeed(
       seedColor: AppColorTheme.light.primary.shade500,
     ),
+    filledButtonTheme: FilledButtonThemeData(
+      style: FilledButton.styleFrom(
+        textStyle: AppTextTheme.light.labelLarge.copyWith(
+          fontWeight: FontWeight.w700,
+        ),
+        splashFactory: NoSplash.splashFactory,
+        backgroundColor: AppColorTheme.light.primary.shade500,
+        foregroundColor: AppColorTheme.light.primary.shade50,
+        padding: const EdgeInsets.symmetric(
+          vertical: 16,
+          horizontal: 24,
+        ),
+      ),
+    ),
     extensions: [
       AppColorTheme.light,
       AppTextTheme.light,
