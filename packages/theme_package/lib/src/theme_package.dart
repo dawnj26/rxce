@@ -14,4 +14,7 @@ class ThemePackage {
       AppTextTheme.light,
     ],
   );
+
+  /// Default padding value
+  static const double padding = 16;
 }
