@@ -14,7 +14,6 @@ class AppRouter extends RootStackRouter {
     AutoRoute(
       path: '/courses',
       page: CourseRoute.page,
-      initial: true,
       children: [
         AutoRoute(page: CourseListRoute.page, initial: true, path: ''),
         AutoRoute(page: CourseSearchRoute.page, path: 'search'),
