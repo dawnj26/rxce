@@ -60,8 +60,8 @@ class CourseListScreen extends StatelessWidget {
     await context.router.push(
       CourseSearchRoute(
         onFinished: (query) async {
-          await context.router.replace(
-            CourseSearchResultRoute(query: query),
+          await context.router.replacePath(
+            'search/$query',
           );
         },
       ),
