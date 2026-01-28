@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 /// {@template app_text_theme}
 /// Text theme for the application
 ///
 /// Provides a consistent set of text styles used throughout the app.
-/// All styles use the Montserrat font family.
+/// All styles use the Montserrat font family from Google Fonts.
 /// {@endtemplate}
 class AppTextTheme extends ThemeExtension<AppTextTheme> {
   /// {@macro app_text_theme}
@@ -23,11 +24,7 @@ class AppTextTheme extends ThemeExtension<AppTextTheme> {
     required this.paragraphLarge,
     required this.paragraphMedium,
     required this.paragraphSmall,
-    this.fontFamily = 'Montserrat',
   });
-
-  /// Font family used throughout the app
-  final String fontFamily;
 
   /// Extra large heading style
   final TextStyle heading1;
@@ -72,76 +69,62 @@ class AppTextTheme extends ThemeExtension<AppTextTheme> {
   final TextStyle labelExtraSmall;
 
   /// Default light theme
-  static const AppTextTheme light = AppTextTheme(
-    heading1: TextStyle(
-      fontFamily: 'Montserrat',
+  static AppTextTheme light = AppTextTheme(
+    heading1: GoogleFonts.montserrat(
       fontSize: 36,
-      height: 44,
+      height: 44 / 36,
     ),
-    heading2: TextStyle(
-      fontFamily: 'Montserrat',
+    heading2: GoogleFonts.montserrat(
       fontSize: 32,
-      height: 40,
+      height: 40 / 32,
     ),
-    heading3: TextStyle(
-      fontFamily: 'Montserrat',
+    heading3: GoogleFonts.montserrat(
       fontSize: 28,
-      height: 36,
+      height: 36 / 28,
     ),
-    heading4: TextStyle(
-      fontFamily: 'Montserrat',
+    heading4: GoogleFonts.montserrat(
       fontSize: 24,
-      height: 32,
+      height: 32 / 24,
     ),
-    heading5: TextStyle(
-      fontFamily: 'Montserrat',
+    heading5: GoogleFonts.montserrat(
       fontSize: 20,
-      height: 28,
+      height: 28 / 20,
     ),
-    heading6: TextStyle(
-      fontFamily: 'Montserrat',
+    heading6: GoogleFonts.montserrat(
       fontSize: 18,
-      height: 24,
+      height: 24 / 18,
     ),
-    paragraphLarge: TextStyle(
-      fontFamily: 'Montserrat',
+    paragraphLarge: GoogleFonts.montserrat(
       fontSize: 18,
-      height: 28,
+      height: 28 / 18,
     ),
-    paragraphMedium: TextStyle(
-      fontFamily: 'Montserrat',
+    paragraphMedium: GoogleFonts.montserrat(
       fontSize: 16,
-      height: 24,
+      height: 24 / 16,
     ),
-    paragraphSmall: TextStyle(
-      fontFamily: 'Montserrat',
+    paragraphSmall: GoogleFonts.montserrat(
       fontSize: 14,
-      height: 20,
+      height: 20 / 14,
     ),
-    paragraphExtraSmall: TextStyle(
-      fontFamily: 'Montserrat',
+    paragraphExtraSmall: GoogleFonts.montserrat(
       fontSize: 12,
-      height: 20,
+      height: 20 / 12,
     ),
-    labelLarge: TextStyle(
-      fontFamily: 'Montserrat',
+    labelLarge: GoogleFonts.montserrat(
       fontSize: 16,
-      height: 18,
+      height: 18 / 16,
     ),
-    labelMedium: TextStyle(
-      fontFamily: 'Montserrat',
+    labelMedium: GoogleFonts.montserrat(
       fontSize: 14,
-      height: 16,
+      height: 16 / 14,
     ),
-    labelSmall: TextStyle(
-      fontFamily: 'Montserrat',
+    labelSmall: GoogleFonts.montserrat(
       fontSize: 12,
-      height: 16,
+      height: 16 / 12,
     ),
-    labelExtraSmall: TextStyle(
-      fontFamily: 'Montserrat',
+    labelExtraSmall: GoogleFonts.montserrat(
       fontSize: 10,
-      height: 16,
+      height: 16 / 10,
     ),
   );
 
@@ -178,7 +161,6 @@ class AppTextTheme extends ThemeExtension<AppTextTheme> {
       paragraphLarge: paragraphLarge ?? this.paragraphLarge,
       paragraphMedium: paragraphMedium ?? this.paragraphMedium,
       paragraphSmall: paragraphSmall ?? this.paragraphSmall,
-      fontFamily: fontFamily ?? this.fontFamily,
     );
   }
 
@@ -217,7 +199,6 @@ class AppTextTheme extends ThemeExtension<AppTextTheme> {
         t,
       )!,
       paragraphSmall: TextStyle.lerp(paragraphSmall, other.paragraphSmall, t)!,
-      fontFamily: fontFamily,
     );
   }
 }
