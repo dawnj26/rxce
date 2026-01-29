@@ -46,6 +46,7 @@ class SignInScreen extends StatelessWidget {
                   decoration: InputDecoration(
                     labelText: context.l10n.emailHint,
                   ),
+                  textInputAction: TextInputAction.next,
                 ),
                 const SizedBox(height: 16),
                 Text(
@@ -55,8 +56,9 @@ class SignInScreen extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 8),
-                const PasswordField(),
-                const SizedBox(height: 32),
+                const PasswordField(
+                  textInputAction: TextInputAction.done,
+                ),
                 FilledButton(
                   onPressed: () {},
                   child: const Text('Authenticate'),
