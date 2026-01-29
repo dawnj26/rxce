@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:lucide_icons_flutter/lucide_icons.dart';
 
 class PasswordField extends StatefulWidget {
-  const PasswordField({super.key, this.onChanged});
+  const PasswordField({super.key, this.onChanged, this.textInputAction});
 
   final void Function(String value)? onChanged;
+  final TextInputAction? textInputAction;
 
   @override
   State<PasswordField> createState() => _PasswordFieldState();
@@ -31,6 +32,7 @@ class _PasswordFieldState extends State<PasswordField> {
           ),
         ),
       ),
+      textInputAction: widget.textInputAction,
     );
   }
 }
