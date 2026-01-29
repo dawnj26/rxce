@@ -59,6 +59,16 @@ class SignInScreen extends StatelessWidget {
                 const PasswordField(
                   textInputAction: TextInputAction.done,
                 ),
+                Row(
+                  mainAxisAlignment: .end,
+                  children: [
+                    TextButton(
+                      onPressed: () {},
+                      child: Text(context.l10n.forgotPasswordLabel),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 24),
                 FilledButton(
                   onPressed: () {},
                   child: const Text('Authenticate'),
