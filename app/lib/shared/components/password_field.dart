@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lucide_icons_flutter/lucide_icons.dart';
+import 'package:rxce/l10n/l10n.dart';
 
 class PasswordField extends StatefulWidget {
   const PasswordField({super.key, this.onChanged, this.textInputAction});
@@ -20,7 +21,7 @@ class _PasswordFieldState extends State<PasswordField> {
       obscureText: _obscureText,
       onChanged: widget.onChanged,
       decoration: InputDecoration(
-        labelText: 'Enter your password',
+        labelText: context.l10n.passwordHint,
         suffixIcon: IconButton(
           onPressed: () {
             setState(() {
