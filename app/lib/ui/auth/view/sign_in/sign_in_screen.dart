@@ -71,10 +71,33 @@ class SignInScreen extends StatelessWidget {
                 const SizedBox(height: 24),
                 FilledButton(
                   onPressed: () {},
-                  child: const Text('Authenticate'),
                   child: Text(
                     context.l10n.signInButtonLabel,
                   ),
+                ),
+                const Spacer(),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(top: 2),
+                      child: Text(
+                        "Don't have an account?",
+                        style: context.appText.labelSmall,
+                      ),
+                    ),
+                    TextButton(
+                      style: TextButton.styleFrom(
+                        textStyle: context.appText.labelSmall.copyWith(
+                          fontWeight: FontWeight.w700,
+                        ),
+                        padding: const .symmetric(horizontal: 16, vertical: 8),
+                        minimumSize: Size.zero,
+                      ),
+                      onPressed: () {},
+                      child: const Text('Sign Up'),
+                    ),
+                  ],
                 ),
               ],
             ),
