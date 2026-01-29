@@ -7,5 +7,29 @@
     "loginSubtitle": "Please login your account",
     "@loginSubtitle": {
         "description": "Subtitle for the login screen"
+    },
+    "emailLabel": "Email Address",
+    "@emailLabel": {
+        "description": "Label for the email address input field"
+    },
+    "emailHint": "example@email.com",
+    "@emailHint": {
+        "description": "Hint text for the email address input field"
+    },
+    "passwordLabel": "Password",
+    "@passwordLabel": {
+        "description": "Label for the password input field"
+    },
+    "forgotPasswordLabel": "Forgot password?",
+    "@forgotPasswordLabel": {
+        "description": "Label for the forgot password button"
+    },
+    "passwordHint": "Enter your password",
+    "@passwordHint": {
+        "description": "Hint text for the password input field"
+    },
+    "signInButtonLabel": "Sign In",
+    "@signInButtonLabel": {
+        "description": "Label for the sign in button"
     }
 }
