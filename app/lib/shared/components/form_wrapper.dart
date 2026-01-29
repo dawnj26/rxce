@@ -11,7 +11,7 @@ class FormWrapper extends StatelessWidget {
       onTap: () {
         FocusScope.of(context).unfocus();
       },
-      child: child,
+      child: Form(child: child),
     );
   }
 }
