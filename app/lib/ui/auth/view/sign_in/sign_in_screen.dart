@@ -36,20 +36,20 @@ class SignInScreen extends StatelessWidget {
                 ),
                 const SizedBox(height: 32),
                 Text(
-                  'Email address',
+                  context.l10n.emailLabel,
                   style: context.appText.labelLarge.copyWith(
                     fontWeight: FontWeight.w600,
                   ),
                 ),
                 const SizedBox(height: 8),
                 TextFormField(
-                  decoration: const InputDecoration(
-                    labelText: 'example@email.com',
+                  decoration: InputDecoration(
+                    labelText: context.l10n.emailHint,
                   ),
                 ),
                 const SizedBox(height: 16),
                 Text(
-                  'Password',
+                  context.l10n.passwordLabel,
                   style: context.appText.labelLarge.copyWith(
                     fontWeight: FontWeight.w600,
                   ),
@@ -60,6 +60,9 @@ class SignInScreen extends StatelessWidget {
                 FilledButton(
                   onPressed: () {},
                   child: const Text('Authenticate'),
+                  child: Text(
+                    context.l10n.signInButtonLabel,
+                  ),
                 ),
               ],
             ),
