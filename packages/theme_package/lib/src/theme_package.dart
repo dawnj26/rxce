@@ -20,19 +20,12 @@ class ThemePackage {
             fontWeight: FontWeight.w700,
           ),
         ),
-        overlayColor: const WidgetStatePropertyAll(
-          Colors.transparent,
+        overlayColor: WidgetStatePropertyAll(
+          AppColorTheme.light.primary.shade700,
         ),
-        splashFactory: NoSplash.splashFactory,
-        backgroundColor: WidgetStateProperty.resolveWith<Color?>((states) {
-          if (states.contains(WidgetState.pressed)) {
-            return AppColorTheme.light.primary.shade600;
-          }
-          if (states.contains(WidgetState.disabled)) {
-            return AppColorTheme.light.neutral.shade200;
-          }
-          return AppColorTheme.light.primary.shade500;
-        }),
+        backgroundColor: WidgetStatePropertyAll(
+          AppColorTheme.light.primary.shade500,
+        ),
         foregroundColor: WidgetStateProperty.fromMap({
           WidgetState.disabled: AppColorTheme.light.neutral.shade400,
           WidgetState.any: AppColorTheme.light.primary.shade50,
