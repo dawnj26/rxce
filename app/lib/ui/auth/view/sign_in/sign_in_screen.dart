@@ -68,29 +68,7 @@ class SignInScreen extends StatelessWidget {
                 const SizedBox(height: 24),
                 const _SubmitButton(),
                 const Spacer(),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.only(top: 2),
-                      child: Text(
-                        "Don't have an account?",
-                        style: context.appText.labelSmall,
-                      ),
-                    ),
-                    TextButton(
-                      style: TextButton.styleFrom(
-                        textStyle: context.appText.labelSmall.copyWith(
-                          fontWeight: FontWeight.w700,
-                        ),
-                        padding: const .symmetric(horizontal: 16, vertical: 8),
-                        minimumSize: Size.zero,
-                      ),
-                      onPressed: () {},
-                      child: const Text('Sign Up'),
-                    ),
-                  ],
-                ),
+                const _Footer(),
               ],
             ),
           ),
@@ -99,6 +77,42 @@ class SignInScreen extends StatelessWidget {
     );
   }
 }
+
+class _Footer extends StatelessWidget {
+  const _Footer();
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Padding(
+          padding: const EdgeInsets.only(top: 2),
+          child: Text(
+            "Don't have an account?",
+            style: context.appText.labelSmall,
+          ),
+        ),
+        TextButton(
+          style: TextButton.styleFrom(
+            textStyle: context.appText.labelSmall.copyWith(
+              fontWeight: FontWeight.w700,
+            ),
+            padding: const .symmetric(horizontal: 16, vertical: 8),
+            minimumSize: Size.zero,
+          ),
+          onPressed: () => _onSignUpPressed(context),
+          child: const Text('Sign Up'),
+        ),
+      ],
+    );
+  }
+
+  Future<void> _onSignUpPressed(BuildContext context) async {
+    await context.router.pushPath('/signup');
+  }
+}
+
 class _Email extends StatelessWidget {
   const _Email();
 
