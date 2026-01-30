@@ -1,4 +1,8 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:formz/formz.dart';
+import 'package:rxce/bloc/sign_in/sign_in_bloc.dart';
 import 'package:rxce/l10n/l10n.dart';
 import 'package:rxce/shared/components/components.dart';
 import 'package:theme_package/theme_package.dart';
@@ -42,12 +46,7 @@ class SignInScreen extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 8),
-                TextFormField(
-                  decoration: InputDecoration(
-                    labelText: context.l10n.emailHint,
-                  ),
-                  textInputAction: TextInputAction.next,
-                ),
+                const _Email(),
                 const SizedBox(height: 16),
                 Text(
                   context.l10n.passwordLabel,
@@ -56,9 +55,7 @@ class SignInScreen extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 8),
-                const PasswordField(
-                  textInputAction: TextInputAction.done,
-                ),
+                const _Password(),
                 Row(
                   mainAxisAlignment: .end,
                   children: [
@@ -69,12 +66,7 @@ class SignInScreen extends StatelessWidget {
                   ],
                 ),
                 const SizedBox(height: 24),
-                FilledButton(
-                  onPressed: () {},
-                  child: Text(
-                    context.l10n.signInButtonLabel,
-                  ),
-                ),
+                const _SubmitButton(),
                 const Spacer(),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -103,6 +95,94 @@ class SignInScreen extends StatelessWidget {
             ),
           ),
         ),
+      ),
+    );
+  }
+}
+class _Email extends StatelessWidget {
+  const _Email();
+
+  @override
+  Widget build(BuildContext context) {
+    final email = context.select(
+      (SignInBloc bloc) => bloc.state.email,
+    );
+    final status = context.select(
+      (SignInBloc bloc) => bloc.state.status,
+    );
+
+    return TextFormField(
+      enabled: status != FormzSubmissionStatus.inProgress,
+      decoration: InputDecoration(
+        errorText: email.displayError?.message,
+        labelText: context.l10n.emailHint,
+      ),
+      textInputAction: TextInputAction.next,
+      onChanged: (value) {
+        context.read<SignInBloc>().add(
+          SignInEvent.emailChanged(value),
+        );
+      },
+    );
+  }
+}
+
+class _Password extends StatelessWidget {
+  const _Password();
+
+  @override
+  Widget build(BuildContext context) {
+    final password = context.select(
+      (SignInBloc bloc) => bloc.state.password,
+    );
+    final status = context.select(
+      (SignInBloc bloc) => bloc.state.status,
+    );
+
+    return PasswordField(
+      enabled: status != FormzSubmissionStatus.inProgress,
+      errorText: password.displayError?.message,
+      textInputAction: TextInputAction.done,
+      onChanged: (value) {
+        context.read<SignInBloc>().add(
+          SignInEvent.passwordChanged(value),
+        );
+      },
+    );
+  }
+}
+
+class _SubmitButton extends StatelessWidget {
+  const _SubmitButton();
+
+  @override
+  Widget build(BuildContext context) {
+    final status = context.select(
+      (SignInBloc bloc) => bloc.state.status,
+    );
+
+    if (status == FormzSubmissionStatus.inProgress) {
+      return FilledButton(
+        onPressed: null,
+        child: Row(
+          mainAxisAlignment: .center,
+          children: [
+            Text(
+              context.l10n.signInButtonLabel,
+            ),
+            const SizedBox(
+              width: 8,
+            ),
+            const Spinner(),
+          ],
+        ),
+      );
+    }
+
+    return FilledButton(
+      onPressed: () {},
+      child: Text(
+        context.l10n.signInButtonLabel,
       ),
     );
   }
