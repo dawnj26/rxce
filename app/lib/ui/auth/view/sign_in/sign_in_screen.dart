@@ -109,7 +109,7 @@ class _Footer extends StatelessWidget {
   }
 
   Future<void> _onSignUpPressed(BuildContext context) async {
-    await context.router.pushPath('/signup');
+    await context.router.replacePath('/signup');
   }
 }
 
