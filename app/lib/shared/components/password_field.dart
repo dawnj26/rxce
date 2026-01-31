@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:lucide_icons_flutter/lucide_icons.dart';
-import 'package:rxce/l10n/l10n.dart';
 
 class PasswordField extends StatefulWidget {
   const PasswordField({
@@ -9,12 +8,14 @@ class PasswordField extends StatefulWidget {
     this.textInputAction,
     this.errorText,
     this.enabled,
+    this.labelText,
   });
 
   final void Function(String value)? onChanged;
   final TextInputAction? textInputAction;
   final String? errorText;
   final bool? enabled;
+  final String? labelText;
 
   @override
   State<PasswordField> createState() => _PasswordFieldState();
@@ -31,7 +32,7 @@ class _PasswordFieldState extends State<PasswordField> {
       onChanged: widget.onChanged,
       decoration: InputDecoration(
         errorText: widget.errorText,
-        labelText: context.l10n.passwordHint,
+        labelText: widget.labelText,
         suffixIcon: IconButton(
           onPressed: () {
             setState(() {

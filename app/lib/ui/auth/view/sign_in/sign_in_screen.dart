@@ -124,6 +124,7 @@ class _Password extends StatelessWidget {
     return PasswordField(
       enabled: status != FormzSubmissionStatus.inProgress,
       errorText: password.displayError?.message,
+      labelText: context.l10n.passwordHint,
       textInputAction: TextInputAction.done,
       onChanged: (value) {
         context.read<SignInBloc>().add(
