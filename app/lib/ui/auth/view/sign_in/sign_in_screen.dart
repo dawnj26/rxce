@@ -5,6 +5,7 @@ import 'package:formz/formz.dart';
 import 'package:rxce/bloc/sign_in/sign_in_bloc.dart';
 import 'package:rxce/l10n/l10n.dart';
 import 'package:rxce/shared/components/components.dart';
+import 'package:rxce/ui/auth/layouts/layouts.dart';
 import 'package:theme_package/theme_package.dart';
 
 class SignInScreen extends StatelessWidget {
@@ -12,62 +13,35 @@ class SignInScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return FormWrapper(
-      child: Scaffold(
-        resizeToAvoidBottomInset: false,
-        body: SafeArea(
-          child: Padding(
-            padding: const EdgeInsets.all(ThemePackage.padding),
-            child: Column(
-              crossAxisAlignment: .stretch,
-              children: [
-                const AppLogo(
-                  type: AppLogoType.icon,
-                  size: 40,
-                  padding: .fromLTRB(0, 8, 0, 16),
-                ),
-                const SizedBox(height: 8),
-                Text(
-                  context.l10n.loginTitle,
-                  style: context.appText.heading1.copyWith(
-                    fontWeight: FontWeight.w600,
-                  ),
-                ),
-                const SizedBox(height: 8),
-                Text(
-                  context.l10n.loginSubtitle,
-                  style: context.appText.labelLarge,
-                ),
-                const SizedBox(height: 32),
-                Label(
-                  context.l10n.emailLabel,
-                ),
-                const SizedBox(height: 8),
-                const _Email(),
-                const SizedBox(height: 16),
-                Label(
-                  context.l10n.passwordLabel,
-                ),
-                const SizedBox(height: 8),
-                const _Password(),
-                Row(
-                  mainAxisAlignment: .end,
-                  children: [
-                    TextButton(
-                      onPressed: () {},
-                      child: Text(context.l10n.forgotPasswordLabel),
-                    ),
-                  ],
-                ),
-                const SizedBox(height: 24),
-                const _SubmitButton(),
-                const Spacer(),
-                const _Footer(),
-              ],
-            ),
-          ),
+    return FormLayout(
+      subtitle: context.l10n.loginSubtitle,
+      title: context.l10n.loginTitle,
+      children: [
+        Label(
+          context.l10n.emailLabel,
         ),
-      ),
+        const SizedBox(height: 8),
+        const _Email(),
+        const SizedBox(height: 16),
+        Label(
+          context.l10n.passwordLabel,
+        ),
+        const SizedBox(height: 8),
+        const _Password(),
+        Row(
+          mainAxisAlignment: .end,
+          children: [
+            TextButton(
+              onPressed: () {},
+              child: Text(context.l10n.forgotPasswordLabel),
+            ),
+          ],
+        ),
+        const SizedBox(height: 24),
+        const _SubmitButton(),
+        const Spacer(),
+        const _Footer(),
+      ],
     );
   }
 }
