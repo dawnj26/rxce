@@ -39,20 +39,14 @@ class SignInScreen extends StatelessWidget {
                   style: context.appText.labelLarge,
                 ),
                 const SizedBox(height: 32),
-                Text(
+                Label(
                   context.l10n.emailLabel,
-                  style: context.appText.labelLarge.copyWith(
-                    fontWeight: FontWeight.w600,
-                  ),
                 ),
                 const SizedBox(height: 8),
                 const _Email(),
                 const SizedBox(height: 16),
-                Text(
+                Label(
                   context.l10n.passwordLabel,
-                  style: context.appText.labelLarge.copyWith(
-                    fontWeight: FontWeight.w600,
-                  ),
                 ),
                 const SizedBox(height: 8),
                 const _Password(),
@@ -109,7 +103,7 @@ class _Footer extends StatelessWidget {
   }
 
   Future<void> _onSignUpPressed(BuildContext context) async {
-    await context.router.pushPath('/signup');
+    await context.router.replacePath('/signup');
   }
 }
 
