@@ -25,6 +25,13 @@ class PasswordField extends StatefulWidget {
 
 class _PasswordFieldState extends State<PasswordField> {
   bool _obscureText = true;
+  final _focusNode = FocusNode(skipTraversal: true);
+
+  @override
+  void dispose() {
+    _focusNode.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -37,6 +44,7 @@ class _PasswordFieldState extends State<PasswordField> {
         errorText: widget.errorText,
         labelText: widget.labelText,
         suffixIcon: IconButton(
+          focusNode: _focusNode,
           onPressed: () {
             setState(() {
               _obscureText = !_obscureText;
