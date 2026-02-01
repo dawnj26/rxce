@@ -9,6 +9,7 @@ class PasswordField extends StatefulWidget {
     this.errorText,
     this.enabled,
     this.labelText,
+    this.onSubmitted,
   });
 
   final void Function(String value)? onChanged;
@@ -16,6 +17,7 @@ class PasswordField extends StatefulWidget {
   final String? errorText;
   final bool? enabled;
   final String? labelText;
+  final void Function(String value)? onSubmitted;
 
   @override
   State<PasswordField> createState() => _PasswordFieldState();
@@ -30,6 +32,7 @@ class _PasswordFieldState extends State<PasswordField> {
       enabled: widget.enabled,
       obscureText: _obscureText,
       onChanged: widget.onChanged,
+      onFieldSubmitted: widget.onSubmitted,
       decoration: InputDecoration(
         errorText: widget.errorText,
         labelText: widget.labelText,
