@@ -39,7 +39,6 @@ class SignInScreen extends StatelessWidget {
         ),
         const SizedBox(height: 24),
         const _SubmitButton(),
-        const Spacer(),
         const _Footer(),
       ],
     );
