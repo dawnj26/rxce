@@ -3,6 +3,8 @@
 /// Contains static lists of valid U.S. states/territories and healthcare professions
 /// that can be used for CE requirement validation and filtering.
 class CeRequirementData {
+  const CeRequirementData._();
+
   /// List of all U.S. states and territories.
   static final List<String> states = [
     'Alabama',
