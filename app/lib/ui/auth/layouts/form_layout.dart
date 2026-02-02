@@ -19,7 +19,7 @@ class FormLayout extends StatelessWidget {
     return FormWrapper(
       child: Scaffold(
         body: SafeArea(
-          child: Padding(
+          child: SingleChildScrollView(
             padding: const EdgeInsets.all(ThemePackage.padding),
             child: Column(
               crossAxisAlignment: .stretch,
@@ -47,7 +47,6 @@ class FormLayout extends StatelessWidget {
             ),
           ),
         ),
-        resizeToAvoidBottomInset: false,
       ),
     );
   }
