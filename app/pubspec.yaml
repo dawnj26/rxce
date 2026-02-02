@@ -11,6 +11,7 @@ environment:
 
 dependencies:
   api_package: any
+  authentication_package: any
   auto_route: ^11.0.0
   bloc: ^9.0.1
   bloc_concurrency: ^0.3.0
