@@ -25,10 +25,8 @@ class CourseItemCard extends StatelessWidget {
           color: context.appColor.neutral.shade50,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(12),
-            side: BorderSide(
-              color: colorScheme.outlineVariant,
-            ),
           ),
+          elevation: 0,
           child: InkWell(
             onTap: onTap,
             child: Stack(
