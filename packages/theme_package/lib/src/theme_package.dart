@@ -10,6 +10,7 @@ class ThemePackage {
 
   /// Default light theme data
   static ThemeData get light => ThemeData.light().copyWith(
+    scaffoldBackgroundColor: Colors.white,
     colorScheme: ColorScheme.fromSeed(
       seedColor: AppColorTheme.light.primary.shade500,
     ),
