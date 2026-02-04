@@ -1,33 +1,20 @@
 import 'package:course_package/course_package.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-
-extension CourseTypeColors on CourseType {
-  MaterialColor get color {
-    switch (this) {
-      case CourseType.live:
-        return Colors.red;
-      case CourseType.recorded:
-        return Colors.green;
-      case CourseType.gamified:
-        return Colors.purple;
-      case CourseType.monograph:
-        return Colors.blue;
-    }
-  }
-}
+import 'package:lucide_icons_flutter/lucide_icons.dart';
+import 'package:theme_package/theme_package.dart';
 
 extension CourseTypeIcons on CourseType {
   IconData get icon {
     switch (this) {
       case CourseType.live:
-        return FontAwesomeIcons.video;
+        return LucideIcons.radio;
       case CourseType.recorded:
-        return FontAwesomeIcons.circlePlay;
+        return LucideIcons.video;
       case CourseType.gamified:
-        return FontAwesomeIcons.gamepad;
+        return LucideIcons.gamepad;
       case CourseType.monograph:
-        return FontAwesomeIcons.book;
+        return LucideIcons.bookText;
     }
   }
 }
@@ -39,31 +26,23 @@ class CourseTypeBadge extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
-      decoration: BoxDecoration(
-        color: type.color,
-        borderRadius: BorderRadius.circular(8),
-      ),
-      child: Row(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          FaIcon(
-            type.icon,
-            color: type.color.shade50,
-            size: 12,
+    return Row(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        FaIcon(
+          type.icon,
+          color: context.appColor.primary.shade500,
+          size: 12,
+        ),
+        const SizedBox(width: 6),
+        Text(
+          type.label,
+          style: context.appText.labelSmall.copyWith(
+            color: context.appColor.primary.shade500,
+            fontWeight: FontWeight.w600,
           ),
-          const SizedBox(width: 6),
-          Text(
-            type.label,
-            style: TextStyle(
-              color: type.color.shade50,
-              fontSize: 12,
-              fontWeight: FontWeight.w700,
-            ),
-          ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }
