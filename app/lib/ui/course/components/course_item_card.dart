@@ -1,7 +1,7 @@
 import 'package:course_package/course_package.dart';
 import 'package:flutter/material.dart';
-import 'package:rxce/shared/utils/formatter.dart';
 import 'package:rxce/ui/course/components/components.dart';
+import 'package:theme_package/theme_package.dart';
 
 class CourseItemCard extends StatelessWidget {
   const CourseItemCard({
@@ -15,8 +15,6 @@ class CourseItemCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final colorScheme = Theme.of(context).colorScheme;
-
     return LayoutBuilder(
       builder: (context, constraints) {
         const aspectRatio = 1 / 2;
@@ -24,7 +22,7 @@ class CourseItemCard extends StatelessWidget {
 
         return Card(
           clipBehavior: Clip.hardEdge,
-          color: colorScheme.surface,
+          color: context.appColor.neutral.shade50,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(12),
             side: BorderSide(
@@ -81,22 +79,17 @@ class _Ceu extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final colorScheme = Theme.of(context).colorScheme;
-    final textTheme = Theme.of(context).textTheme;
-
     return Container(
       padding: const EdgeInsets.all(8),
       decoration: BoxDecoration(
-        color: colorScheme.primaryContainer,
-        borderRadius: const BorderRadius.only(
-          topLeft: Radius.circular(12),
-        ),
+        color: context.appColor.primary.shade500,
+        borderRadius: BorderRadius.circular(8),
       ),
       child: Text(
-        'CEUs: $ceus',
-        style: textTheme.bodySmall?.copyWith(
-          color: colorScheme.onPrimaryContainer,
-          fontWeight: FontWeight.w500,
+        '$ceus CEU',
+        style: context.appText.labelMedium.copyWith(
+          color: context.appColor.primary.shade50,
+          fontWeight: FontWeight.w600,
         ),
       ),
     );
@@ -112,12 +105,12 @@ class _CourseDescription extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final textTheme = Theme.of(context).textTheme;
-
     return Text(
       description,
-      style: textTheme.bodySmall,
-      maxLines: 3,
+      style: context.appText.paragraphSmall.copyWith(
+        color: context.appColor.neutral.shade500,
+      ),
+      maxLines: 2,
       overflow: TextOverflow.ellipsis,
     );
   }
@@ -159,17 +152,11 @@ class _CourseItemHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final textTheme = Theme.of(context).textTheme;
-
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        RichText(
-          text: TextSpan(text: course.testName, style: textTheme.titleSmall),
-        ),
-        const SizedBox(height: 8),
-        Wrap(
-          runSpacing: 4,
+        Row(
+          mainAxisAlignment: .spaceBetween,
           children: [
             CourseTypeBadge(type: course.courseType),
             const SizedBox(width: 8),
