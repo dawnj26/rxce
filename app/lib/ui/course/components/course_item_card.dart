@@ -125,20 +125,17 @@ class _CardFooter extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final textTheme = Theme.of(context).textTheme;
-    final colorScheme = Theme.of(context).colorScheme;
-
-    if (!course.isLive) {
-      return const SizedBox.shrink();
-    }
-
-    final text = 'Registration opens: ${formatDate(course.startDate)}';
-
-    return Text(
-      text,
-      style: textTheme.bodySmall?.copyWith(
-        color: colorScheme.primary,
-      ),
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Text(
+          course.difficultyLevel.label,
+          style: context.appText.labelMedium.copyWith(
+            color: context.appColor.neutral.shade500,
+          ),
+        ),
+        _Ceu(ceus: course.credits),
+      ],
     );
   }
 }
