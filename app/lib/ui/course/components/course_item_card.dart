@@ -29,37 +29,26 @@ class CourseItemCard extends StatelessWidget {
           elevation: 0,
           child: InkWell(
             onTap: onTap,
-            child: Stack(
-              children: [
-                ConstrainedBox(
-                  constraints: BoxConstraints(
-                    minHeight: minHeight,
-                  ),
-                  child: Padding(
-                    padding: const EdgeInsets.all(16),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        _CourseItemHeader(course: course),
-                        Padding(
-                          padding: const EdgeInsets.fromLTRB(0, 16, 0, 16),
-                          child: _CourseDescription(
-                            description: course.description,
-                          ),
-                        ),
-                        _CardFooter(course: course),
-                      ],
+            child: ConstrainedBox(
+              constraints: BoxConstraints(
+                minHeight: minHeight,
+              ),
+              child: Padding(
+                padding: const EdgeInsets.all(16),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    _CourseItemHeader(course: course),
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(0, 8, 0, 16),
+                      child: _CourseDescription(
+                        description: course.description,
+                      ),
                     ),
-                  ),
+                    _CardFooter(course: course),
+                  ],
                 ),
-                Positioned(
-                  bottom: 1,
-                  right: 1,
-                  child: _Ceu(
-                    ceus: course.credits,
-                  ),
-                ),
-              ],
+              ),
             ),
           ),
         );
@@ -78,7 +67,7 @@ class _Ceu extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.all(8),
+      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
       decoration: BoxDecoration(
         color: context.appColor.primary.shade500,
         borderRadius: BorderRadius.circular(8),
@@ -154,9 +143,19 @@ class _CourseItemHeader extends StatelessWidget {
           mainAxisAlignment: .spaceBetween,
           children: [
             CourseTypeBadge(type: course.courseType),
-            const SizedBox(width: 8),
-            DifficultyBadge(level: course.difficultyLevel),
+            if (course.isFreeForMembers) const FreeBadge(),
           ],
+        ),
+        const SizedBox(height: 8),
+        RichText(
+          text: TextSpan(
+            text: '${course.testName}\n',
+            style: context.appText.heading6.copyWith(
+              color: context.appColor.primary.shade900,
+            ),
+          ),
+          maxLines: 2,
+          overflow: TextOverflow.ellipsis,
         ),
       ],
     );
