@@ -40,7 +40,7 @@ class CourseItemCard extends StatelessWidget {
                   children: [
                     _CourseItemHeader(course: course),
                     Padding(
-                      padding: const EdgeInsets.fromLTRB(0, 8, 0, 16),
+                      padding: const EdgeInsets.fromLTRB(0, 8, 0, 24),
                       child: _CourseDescription(
                         description: course.description,
                       ),
