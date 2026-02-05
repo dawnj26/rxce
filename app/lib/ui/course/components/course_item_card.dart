@@ -114,15 +114,53 @@ class _CardFooter extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      crossAxisAlignment: .end,
       children: [
-        Text(
-          course.difficultyLevel.label,
-          style: context.appText.labelMedium.copyWith(
-            color: context.appColor.neutral.shade500,
-          ),
+        Column(
+          crossAxisAlignment: .start,
+          children: [
+            const _Reviews(stars: 5, reviewCount: 120),
+            const SizedBox(height: 4),
+            Text(
+              course.difficultyLevel.label,
+              style: context.appText.labelMedium.copyWith(
+                color: context.appColor.neutral.shade500,
+              ),
+            ),
+          ],
         ),
         _Ceu(ceus: course.credits),
       ],
+    );
+  }
+}
+
+class _Reviews extends StatelessWidget {
+  const _Reviews({
+    required this.reviewCount,
+    required this.stars,
+  });
+
+  final double stars;
+  final int reviewCount;
+
+  @override
+  Widget build(BuildContext context) {
+    return RichText(
+      text: TextSpan(
+        text: '★ ${stars.toStringAsFixed(1)}',
+        style: context.appText.labelMedium.copyWith(
+          color: context.appColor.neutral.shade950,
+        ),
+        children: [
+          TextSpan(
+            text: ' ($reviewCount reviews)',
+            style: context.appText.labelMedium.copyWith(
+              color: context.appColor.neutral.shade500,
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
