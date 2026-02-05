@@ -5,6 +5,7 @@ import 'package:formz/formz.dart';
 import 'package:rxce/bloc/sign_in/sign_in_bloc.dart';
 import 'package:rxce/l10n/l10n.dart';
 import 'package:rxce/shared/components/components.dart';
+import 'package:rxce/shared/formz/formz.dart';
 import 'package:rxce/ui/auth/layouts/layouts.dart';
 import 'package:theme_package/theme_package.dart';
 
@@ -85,11 +86,11 @@ class _Email extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final email = context.select(
-      (SignInBloc bloc) => bloc.state.email,
+    final email = context.select<SignInBloc, EmailInput>(
+      (bloc) => bloc.state.email,
     );
-    final status = context.select(
-      (SignInBloc bloc) => bloc.state.status,
+    final status = context.select<SignInBloc, FormzSubmissionStatus>(
+      (bloc) => bloc.state.status,
     );
 
     return TextFormField(
@@ -113,11 +114,11 @@ class _Password extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final password = context.select(
-      (SignInBloc bloc) => bloc.state.password,
+    final password = context.select<SignInBloc, PasswordInput>(
+      (bloc) => bloc.state.password,
     );
-    final status = context.select(
-      (SignInBloc bloc) => bloc.state.status,
+    final status = context.select<SignInBloc, FormzSubmissionStatus>(
+      (bloc) => bloc.state.status,
     );
 
     return PasswordField(
@@ -139,8 +140,8 @@ class _SubmitButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final status = context.select(
-      (SignInBloc bloc) => bloc.state.status,
+    final status = context.select<SignInBloc, FormzSubmissionStatus>(
+      (bloc) => bloc.state.status,
     );
 
     if (status == FormzSubmissionStatus.inProgress) {

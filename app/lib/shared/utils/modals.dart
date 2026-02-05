@@ -21,7 +21,7 @@ Future<void> showCourseFilterModal({
     ),
     context: context,
     isScrollControlled: true,
-    builder: (BuildContext _) {
+    builder: (_) {
       return CourseFilterModal(
         selectedCategory: categoryFilter,
         selectedType: typeFilter,

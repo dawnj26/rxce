@@ -7,6 +7,7 @@ import 'package:rxce/bloc/sign_up/sign_up_bloc.dart';
 import 'package:rxce/l10n/l10n.dart';
 import 'package:rxce/shared/components/label.dart';
 import 'package:rxce/shared/components/password_field.dart';
+import 'package:rxce/shared/formz/formz.dart';
 import 'package:rxce/ui/auth/layouts/layouts.dart';
 import 'package:theme_package/theme_package.dart';
 
@@ -68,8 +69,8 @@ class _Profession extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final status = context.select(
-      (SignUpBloc bloc) => bloc.state.status,
+    final status = context.select<SignUpBloc, FormzSubmissionStatus>(
+      (bloc) => bloc.state.status,
     );
 
     return DropdownButtonFormField<Profession>(
@@ -93,11 +94,11 @@ class _CreateAccount extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final acceptedTerms = context.select(
-      (SignUpBloc bloc) => bloc.state.acceptedTerms,
+    final acceptedTerms = context.select<SignUpBloc, bool>(
+      (bloc) => bloc.state.acceptedTerms,
     );
-    final status = context.select(
-      (SignUpBloc bloc) => bloc.state.status,
+    final status = context.select<SignUpBloc, FormzSubmissionStatus>(
+      (bloc) => bloc.state.status,
     );
 
     return FilledButton(
@@ -114,11 +115,11 @@ class _AgreeTerms extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final acceptedTerms = context.select(
-      (SignUpBloc bloc) => bloc.state.acceptedTerms,
+    final acceptedTerms = context.select<SignUpBloc, bool>(
+      (bloc) => bloc.state.acceptedTerms,
     );
-    final status = context.select(
-      (SignUpBloc bloc) => bloc.state.status,
+    final status = context.select<SignUpBloc, FormzSubmissionStatus>(
+      (bloc) => bloc.state.status,
     );
 
     return _Checkbox(
@@ -139,11 +140,11 @@ class _WantUpdates extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final wantsUpdates = context.select(
-      (SignUpBloc bloc) => bloc.state.wantsUpdates,
+    final wantsUpdates = context.select<SignUpBloc, bool>(
+      (bloc) => bloc.state.wantsUpdates,
     );
-    final status = context.select(
-      (SignUpBloc bloc) => bloc.state.status,
+    final status = context.select<SignUpBloc, FormzSubmissionStatus>(
+      (bloc) => bloc.state.status,
     );
 
     return _Checkbox(
@@ -164,11 +165,11 @@ class _ConfirmPassword extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final confirmPassword = context.select(
-      (SignUpBloc bloc) => bloc.state.confirmPassword,
+    final confirmPassword = context.select<SignUpBloc, ConfirmPasswordInput>(
+      (bloc) => bloc.state.confirmPassword,
     );
-    final status = context.select(
-      (SignUpBloc bloc) => bloc.state.status,
+    final status = context.select<SignUpBloc, FormzSubmissionStatus>(
+      (bloc) => bloc.state.status,
     );
 
     return PasswordField(
@@ -191,9 +192,11 @@ class _Password extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final password = context.select((SignUpBloc bloc) => bloc.state.password);
-    final status = context.select(
-      (SignUpBloc bloc) => bloc.state.status,
+    final password = context.select<SignUpBloc, PasswordInput>(
+      (bloc) => bloc.state.password,
+    );
+    final status = context.select<SignUpBloc, FormzSubmissionStatus>(
+      (bloc) => bloc.state.status,
     );
 
     return PasswordField(
@@ -214,9 +217,11 @@ class _Email extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final email = context.select((SignUpBloc bloc) => bloc.state.email);
-    final status = context.select(
-      (SignUpBloc bloc) => bloc.state.status,
+    final email = context.select<SignUpBloc, EmailInput>(
+      (bloc) => bloc.state.email,
+    );
+    final status = context.select<SignUpBloc, FormzSubmissionStatus>(
+      (bloc) => bloc.state.status,
     );
 
     return TextFormField(
@@ -239,8 +244,8 @@ class _Footer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final status = context.select(
-      (SignUpBloc bloc) => bloc.state.status,
+    final status = context.select<SignUpBloc, FormzSubmissionStatus>(
+      (bloc) => bloc.state.status,
     );
 
     return Row(
