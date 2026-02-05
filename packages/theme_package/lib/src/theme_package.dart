@@ -24,9 +24,10 @@ class ThemePackage {
         overlayColor: WidgetStatePropertyAll(
           AppColorTheme.light.primary.shade700,
         ),
-        backgroundColor: WidgetStatePropertyAll(
-          AppColorTheme.light.primary.shade500,
-        ),
+        backgroundColor: WidgetStateProperty.fromMap({
+          WidgetState.disabled: AppColorTheme.light.neutral.shade200,
+          WidgetState.any: AppColorTheme.light.primary.shade500,
+        }),
         foregroundColor: WidgetStateProperty.fromMap({
           WidgetState.disabled: AppColorTheme.light.neutral.shade400,
           WidgetState.any: AppColorTheme.light.primary.shade50,
