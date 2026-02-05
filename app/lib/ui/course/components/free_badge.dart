@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:lucide_icons_flutter/lucide_icons.dart';
+import 'package:theme_package/theme_package.dart';
 
 class FreeBadge extends StatelessWidget {
   const FreeBadge({super.key, this.membersOnly = false});
@@ -8,32 +10,31 @@ class FreeBadge extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final color = membersOnly ? Colors.orange : Colors.green;
+    final color = context.appColor.tertiary;
 
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(8),
         border: Border.all(
-          color: color,
-          width: 1.5,
+          color: color.shade500,
         ),
       ),
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
           FaIcon(
-            FontAwesomeIcons.circleCheck,
-            size: 12,
-            color: color,
+            LucideIcons.star,
+            size: 10,
+            color: color.shade500,
+            fill: 1,
           ),
           const SizedBox(width: 4),
           Text(
-            'FREE',
-            style: TextStyle(
-              color: color,
-              fontSize: 12,
-              fontWeight: FontWeight.w700,
+            'Free',
+            style: context.appText.labelSmall.copyWith(
+              color: color.shade500,
+              fontWeight: FontWeight.w600,
             ),
           ),
         ],

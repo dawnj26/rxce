@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:lucide_icons_flutter/lucide_icons.dart';
-import 'package:rxce/l10n/l10n.dart';
 
 class PasswordField extends StatefulWidget {
   const PasswordField({
@@ -9,12 +8,16 @@ class PasswordField extends StatefulWidget {
     this.textInputAction,
     this.errorText,
     this.enabled,
+    this.labelText,
+    this.onSubmitted,
   });
 
   final void Function(String value)? onChanged;
   final TextInputAction? textInputAction;
   final String? errorText;
   final bool? enabled;
+  final String? labelText;
+  final void Function(String value)? onSubmitted;
 
   @override
   State<PasswordField> createState() => _PasswordFieldState();
@@ -22,6 +25,13 @@ class PasswordField extends StatefulWidget {
 
 class _PasswordFieldState extends State<PasswordField> {
   bool _obscureText = true;
+  final _focusNode = FocusNode(skipTraversal: true);
+
+  @override
+  void dispose() {
+    _focusNode.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -29,10 +39,12 @@ class _PasswordFieldState extends State<PasswordField> {
       enabled: widget.enabled,
       obscureText: _obscureText,
       onChanged: widget.onChanged,
+      onFieldSubmitted: widget.onSubmitted,
       decoration: InputDecoration(
         errorText: widget.errorText,
-        labelText: context.l10n.passwordHint,
+        labelText: widget.labelText,
         suffixIcon: IconButton(
+          focusNode: _focusNode,
           onPressed: () {
             setState(() {
               _obscureText = !_obscureText;
