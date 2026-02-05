@@ -22,7 +22,7 @@ class CourseItemCard extends StatelessWidget {
 
         return Card(
           clipBehavior: Clip.hardEdge,
-          color: context.appColor.neutral.shade50,
+          color: context.appColor.neutral.shade100,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(12),
           ),
