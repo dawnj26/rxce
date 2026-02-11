@@ -26,6 +26,97 @@ class AppTextTheme extends ThemeExtension<AppTextTheme> {
     required this.paragraphSmall,
   });
 
+  /// Default light theme
+  AppTextTheme.light()
+    : fontFamily = 'Montserrat',
+      heading1 = const TextStyle(
+        fontFamily: 'Montserrat',
+        fontSize: 36,
+        height: 44 / 36,
+        fontVariations: [FontVariation('wght', 400)],
+      ),
+      heading2 = const TextStyle(
+        fontFamily: 'Montserrat',
+        fontSize: 32,
+        height: 40 / 32,
+        fontVariations: [FontVariation('wght', 400)],
+      ),
+      heading3 = const TextStyle(
+        fontFamily: 'Montserrat',
+        fontSize: 28,
+        height: 36 / 28,
+        fontVariations: [FontVariation('wght', 400)],
+      ),
+      heading4 = const TextStyle(
+        fontFamily: 'Montserrat',
+        fontSize: 24,
+        height: 32 / 24,
+        fontVariations: [FontVariation('wght', 400)],
+      ),
+      heading5 = const TextStyle(
+        fontFamily: 'Montserrat',
+        fontSize: 20,
+        height: 28 / 20,
+        fontVariations: [FontVariation('wght', 400)],
+      ),
+      heading6 = const TextStyle(
+        fontFamily: 'Montserrat',
+        fontSize: 18,
+        height: 24 / 18,
+        fontVariations: [FontVariation('wght', 400)],
+      ),
+      paragraphLarge = const TextStyle(
+        fontFamily: 'Montserrat',
+        fontSize: 18,
+        height: 28 / 18,
+        fontVariations: [FontVariation('wght', 400)],
+      ),
+      paragraphMedium = const TextStyle(
+        fontFamily: 'Montserrat',
+        fontSize: 16,
+        height: 24 / 16,
+        fontVariations: [FontVariation('wght', 400)],
+      ),
+      paragraphSmall = const TextStyle(
+        fontFamily: 'Montserrat',
+        fontSize: 14,
+        height: 20 / 14,
+        fontVariations: [FontVariation('wght', 400)],
+      ),
+      paragraphExtraSmall = const TextStyle(
+        fontFamily: 'Montserrat',
+        fontSize: 12,
+        height: 20 / 12,
+        fontVariations: [FontVariation('wght', 400)],
+      ),
+      labelLarge = const TextStyle(
+        fontFamily: 'Montserrat',
+        fontSize: 16,
+        height: 18 / 16,
+        fontVariations: [FontVariation('wght', 400)],
+      ),
+      labelMedium = const TextStyle(
+        fontFamily: 'Montserrat',
+        fontSize: 14,
+        height: 16 / 14,
+        fontVariations: [FontVariation('wght', 400)],
+      ),
+      labelSmall = const TextStyle(
+        fontFamily: 'Montserrat',
+        fontSize: 12,
+        height: 16 / 12,
+        fontVariations: [FontVariation('wght', 400)],
+      ),
+      labelExtraSmall = const TextStyle(
+        fontFamily: 'Montserrat',
+        fontSize: 10,
+        height: 16 / 10,
+        fontVariations: [FontVariation('wght', 400)],
+      );
+
+  /// Font family used for all text styles
+  final String fontFamily;
+
   /// Extra large heading style
   final TextStyle heading1;
 
@@ -67,66 +158,6 @@ class AppTextTheme extends ThemeExtension<AppTextTheme> {
 
   /// Extra small label style
   final TextStyle labelExtraSmall;
-
-  /// Default light theme
-  static AppTextTheme light = AppTextTheme(
-    heading1: GoogleFonts.montserrat(
-      fontSize: 36,
-      height: 44 / 36,
-    ),
-    heading2: GoogleFonts.montserrat(
-      fontSize: 32,
-      height: 40 / 32,
-    ),
-    heading3: GoogleFonts.montserrat(
-      fontSize: 28,
-      height: 36 / 28,
-    ),
-    heading4: GoogleFonts.montserrat(
-      fontSize: 24,
-      height: 32 / 24,
-    ),
-    heading5: GoogleFonts.montserrat(
-      fontSize: 20,
-      height: 28 / 20,
-    ),
-    heading6: GoogleFonts.montserrat(
-      fontSize: 18,
-      height: 24 / 18,
-    ),
-    paragraphLarge: GoogleFonts.montserrat(
-      fontSize: 18,
-      height: 28 / 18,
-    ),
-    paragraphMedium: GoogleFonts.montserrat(
-      fontSize: 16,
-      height: 24 / 16,
-    ),
-    paragraphSmall: GoogleFonts.montserrat(
-      fontSize: 14,
-      height: 20 / 14,
-    ),
-    paragraphExtraSmall: GoogleFonts.montserrat(
-      fontSize: 12,
-      height: 20 / 12,
-    ),
-    labelLarge: GoogleFonts.montserrat(
-      fontSize: 16,
-      height: 18 / 16,
-    ),
-    labelMedium: GoogleFonts.montserrat(
-      fontSize: 14,
-      height: 16 / 14,
-    ),
-    labelSmall: GoogleFonts.montserrat(
-      fontSize: 12,
-      height: 16 / 12,
-    ),
-    labelExtraSmall: GoogleFonts.montserrat(
-      fontSize: 10,
-      height: 16 / 10,
-    ),
-  );
 
   @override
   ThemeExtension<AppTextTheme> copyWith({

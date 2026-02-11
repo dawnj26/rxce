@@ -39,7 +39,7 @@ class _AppView extends StatelessWidget {
     return MaterialApp.router(
       routerConfig: router.config(),
       title: 'RxCE',
-      theme: ThemePackage.light,
+      theme: ThemePackage.light(),
       themeMode: ThemeMode.light,
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
