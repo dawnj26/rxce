@@ -76,7 +76,7 @@ class _CourseDescription extends StatelessWidget {
       style: context.appText.paragraphSmall.copyWith(
         color: context.appColor.neutral.shade500,
       ),
-      maxLines: 2,
+      maxLines: 3,
       overflow: TextOverflow.ellipsis,
     );
   }
