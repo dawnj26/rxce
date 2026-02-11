@@ -15,16 +15,21 @@ class CourseItemCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return LayoutBuilder(
-      builder: (context, constraints) {
-        const aspectRatio = 1 / 2;
-        final minHeight = constraints.maxWidth * aspectRatio;
+    const cardHeight = 232.0;
 
-        return Card(
-          clipBehavior: Clip.hardEdge,
-          color: context.appColor.neutral.shade100,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(12),
+    return Card(
+      clipBehavior: Clip.hardEdge,
+      color: context.appColor.neutral.shade100,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(12),
+      ),
+      margin: EdgeInsets.zero,
+      elevation: 0,
+      child: InkWell(
+        onTap: onTap,
+        child: ConstrainedBox(
+          constraints: const BoxConstraints(
+            maxHeight: cardHeight,
           ),
           elevation: 0,
           child: InkWell(
