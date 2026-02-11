@@ -18,15 +18,22 @@ class BottomNavBar extends StatelessWidget {
   Widget build(BuildContext context) {
     final bottomPad = MediaQuery.viewPaddingOf(context).bottom;
 
-    return Container(
-      padding: .fromLTRB(0, 0, 0, bottomPad),
-      color: context.appColor.neutral.shade50,
-      child: SizedBox(
-        height: 80,
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: List.generate(items.length, (i) {
-            final selected = i == currentIndex;
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        return Container(
+          constraints: BoxConstraints(
+            maxHeight: 64 + bottomPad,
+          ),
+          padding: EdgeInsets.fromLTRB(0, 0, 0, bottomPad),
+          color: context.appColor.neutral.shade50,
+          child: SizedBox(
+            height: _toDivisibleBy4(
+              constraints.maxWidth / items.length,
+            ).toDouble(),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: List.generate(items.length, (i) {
+                final selected = i == currentIndex;
 
             return _NavItem(
               onTap: () => onTap?.call(i),
@@ -37,6 +44,10 @@ class BottomNavBar extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  int _toDivisibleBy4(double value) {
+    return (value / 4).floor() * 4;
   }
 }
 
