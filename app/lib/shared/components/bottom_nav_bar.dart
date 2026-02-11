@@ -35,14 +35,16 @@ class BottomNavBar extends StatelessWidget {
               children: List.generate(items.length, (i) {
                 final selected = i == currentIndex;
 
-            return _NavItem(
-              onTap: () => onTap?.call(i),
-              item: items[i],
-              selected: selected,
-            );
-          }),
-        ),
-      ),
+                return _NavItem(
+                  onTap: () => onTap?.call(i),
+                  item: items[i],
+                  selected: selected,
+                );
+              }),
+            ),
+          ),
+        );
+      },
     );
   }
 
