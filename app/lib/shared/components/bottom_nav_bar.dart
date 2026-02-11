@@ -86,7 +86,12 @@ class _NavItem extends StatelessWidget {
                 color: selected
                     ? context.appColor.primary.shade500
                     : context.appColor.neutral.shade500,
-                fontWeight: FontWeight.w700,
+                fontVariations: [
+                  if (selected)
+                    const FontVariation('wght', 600)
+                  else
+                    const FontVariation('wght', 500),
+                ],
               ),
             ),
           ],
