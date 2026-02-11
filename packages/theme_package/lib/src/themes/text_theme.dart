@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 /// {@template app_text_theme}
 /// Text theme for the application
@@ -10,6 +9,7 @@ import 'package:google_fonts/google_fonts.dart';
 class AppTextTheme extends ThemeExtension<AppTextTheme> {
   /// {@macro app_text_theme}
   const AppTextTheme({
+    required this.fontFamily,
     required this.heading1,
     required this.heading2,
     required this.heading3,
@@ -178,6 +178,7 @@ class AppTextTheme extends ThemeExtension<AppTextTheme> {
     String? fontFamily,
   }) {
     return AppTextTheme(
+      fontFamily: fontFamily ?? this.fontFamily,
       heading1: heading1 ?? this.heading1,
       heading2: heading2 ?? this.heading2,
       heading3: heading3 ?? this.heading3,
@@ -204,6 +205,7 @@ class AppTextTheme extends ThemeExtension<AppTextTheme> {
       return this;
     }
     return AppTextTheme(
+      fontFamily: other.fontFamily,
       heading1: TextStyle.lerp(heading1, other.heading1, t)!,
       heading2: TextStyle.lerp(heading2, other.heading2, t)!,
       heading3: TextStyle.lerp(heading3, other.heading3, t)!,
