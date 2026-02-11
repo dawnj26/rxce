@@ -108,7 +108,7 @@ class _CardFooter extends StatelessWidget {
             ),
           ],
         ),
-        _Ceu(ceus: course.credits),
+        CeuBadge(ceus: course.credits),
       ],
     );
   }
