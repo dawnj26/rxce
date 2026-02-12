@@ -27,7 +27,6 @@ class FreeBadge extends StatelessWidget {
             LucideIcons.star,
             size: 10,
             color: color.shade500,
-            fill: 1,
           ),
           const SizedBox(width: 4),
           Text(
