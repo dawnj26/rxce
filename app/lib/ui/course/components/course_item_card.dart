@@ -156,12 +156,17 @@ class _CourseItemHeader extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Row(
-          mainAxisAlignment: .spaceBetween,
-          children: [
-            CourseTypeBadge(type: course.courseType),
-            if (course.isFreeForMembers) const FreeBadge(),
-          ],
+        ConstrainedBox(
+          constraints: const BoxConstraints(
+            minHeight: 24,
+          ),
+          child: Row(
+            mainAxisAlignment: .spaceBetween,
+            children: [
+              CourseTypeBadge(type: course.courseType),
+              if (course.isFreeForMembers) const FreeBadge(),
+            ],
+          ),
         ),
         const SizedBox(height: 8),
         RichText(
