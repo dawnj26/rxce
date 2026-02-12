@@ -31,27 +31,17 @@ class CourseItemCard extends StatelessWidget {
           constraints: const BoxConstraints(
             maxHeight: cardHeight,
           ),
-          elevation: 0,
-          child: InkWell(
-            onTap: onTap,
-            child: ConstrainedBox(
-              constraints: BoxConstraints(
-                minHeight: minHeight,
-              ),
-              child: Padding(
-                padding: const EdgeInsets.all(16),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    _CourseItemHeader(course: course),
-                    Padding(
-                      padding: const EdgeInsets.fromLTRB(0, 8, 0, 24),
-                      child: _CourseDescription(
-                        description: course.description,
-                      ),
-                    ),
-                    _CardFooter(course: course),
-                  ],
+          child: Padding(
+            padding: const EdgeInsets.all(16),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                _CourseItemHeader(course: course),
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(0, 8, 0, 8),
+                  child: _CourseDescription(
+                    description: course.description,
+                  ),
                 ),
                 const Spacer(),
                 _CardFooter(course: course),
