@@ -19,6 +19,7 @@ class FreeBadge extends StatelessWidget {
         border: Border.all(
           color: color.shade500,
         ),
+        color: color.shade50,
       ),
       child: Row(
         mainAxisSize: MainAxisSize.min,
