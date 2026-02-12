@@ -169,12 +169,10 @@ class _CourseItemHeader extends StatelessWidget {
           ),
         ),
         const SizedBox(height: 8),
-        RichText(
-          text: TextSpan(
-            text: '${course.testName}\n',
-            style: context.appText.heading6.copyWith(
-              color: context.appColor.primary.shade900,
-            ),
+        Text(
+          course.testName,
+          style: context.appText.heading6.copyWith(
+            color: context.appColor.primary.shade900,
           ),
           maxLines: 2,
           overflow: TextOverflow.ellipsis,
