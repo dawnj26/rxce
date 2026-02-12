@@ -13,7 +13,7 @@ class FreeBadge extends StatelessWidget {
     final color = context.appColor.tertiary;
 
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(8),
         border: Border.all(
