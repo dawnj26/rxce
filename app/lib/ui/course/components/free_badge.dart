@@ -33,7 +33,9 @@ class FreeBadge extends StatelessWidget {
             'Free',
             style: context.appText.labelSmall.copyWith(
               color: color.shade500,
-              fontWeight: FontWeight.w600,
+              fontVariations: [
+                const FontVariation('wght', 600),
+              ],
             ),
           ),
         ],
