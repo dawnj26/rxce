@@ -13,12 +13,13 @@ class FreeBadge extends StatelessWidget {
     final color = context.appColor.tertiary;
 
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(8),
         border: Border.all(
           color: color.shade500,
         ),
+        color: color.shade50,
       ),
       child: Row(
         mainAxisSize: MainAxisSize.min,
@@ -27,14 +28,15 @@ class FreeBadge extends StatelessWidget {
             LucideIcons.star,
             size: 10,
             color: color.shade500,
-            fill: 1,
           ),
           const SizedBox(width: 4),
           Text(
             'Free',
             style: context.appText.labelSmall.copyWith(
               color: color.shade500,
-              fontWeight: FontWeight.w600,
+              fontVariations: [
+                const FontVariation('wght', 600),
+              ],
             ),
           ),
         ],

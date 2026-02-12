@@ -18,25 +18,38 @@ class BottomNavBar extends StatelessWidget {
   Widget build(BuildContext context) {
     final bottomPad = MediaQuery.viewPaddingOf(context).bottom;
 
-    return Container(
-      padding: .fromLTRB(0, 0, 0, bottomPad),
-      color: context.appColor.neutral.shade50,
-      child: SizedBox(
-        height: 80,
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: List.generate(items.length, (i) {
-            final selected = i == currentIndex;
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        return Container(
+          constraints: BoxConstraints(
+            maxHeight: 64 + bottomPad,
+          ),
+          padding: EdgeInsets.fromLTRB(0, 0, 0, bottomPad),
+          color: context.appColor.neutral.shade50,
+          child: SizedBox(
+            height: _toDivisibleBy4(
+              constraints.maxWidth / items.length,
+            ).toDouble(),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: List.generate(items.length, (i) {
+                final selected = i == currentIndex;
 
-            return _NavItem(
-              onTap: () => onTap?.call(i),
-              item: items[i],
-              selected: selected,
-            );
-          }),
-        ),
-      ),
+                return _NavItem(
+                  onTap: () => onTap?.call(i),
+                  item: items[i],
+                  selected: selected,
+                );
+              }),
+            ),
+          ),
+        );
+      },
     );
+  }
+
+  int _toDivisibleBy4(double value) {
+    return (value / 4).floor() * 4;
   }
 }
 
@@ -53,11 +66,10 @@ class _NavItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      behavior: HitTestBehavior.opaque,
-      onTap: onTap,
-      child: AspectRatio(
-        aspectRatio: 1,
+    return Expanded(
+      child: GestureDetector(
+        behavior: HitTestBehavior.opaque,
+        onTap: onTap,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -74,7 +86,12 @@ class _NavItem extends StatelessWidget {
                 color: selected
                     ? context.appColor.primary.shade500
                     : context.appColor.neutral.shade500,
-                fontWeight: FontWeight.w700,
+                fontVariations: [
+                  if (selected)
+                    const FontVariation('wght', 600)
+                  else
+                    const FontVariation('wght', 500),
+                ],
               ),
             ),
           ],

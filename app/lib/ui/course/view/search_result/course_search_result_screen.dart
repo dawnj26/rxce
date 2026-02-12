@@ -20,8 +20,8 @@ class CourseSearchResultScreen extends StatelessWidget {
       appBar: AppBar(
         title: Builder(
           builder: (context) {
-            final query = context.select(
-              (CourseListBloc bloc) => bloc.state.query,
+            final query = context.select<CourseListBloc, String?>(
+              (bloc) => bloc.state.query,
             );
 
             return Text(query ?? 'Search Results');

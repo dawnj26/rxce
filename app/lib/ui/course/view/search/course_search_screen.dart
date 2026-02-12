@@ -53,8 +53,8 @@ class _CourseSearchScreenState extends State<CourseSearchScreen> {
         actions: [
           Builder(
             builder: (c) {
-              final query = c.select(
-                (CourseSearchBloc bloc) => bloc.state.query,
+              final query = c.select<CourseSearchBloc, String>(
+                (bloc) => bloc.state.query,
               );
 
               if (query.isEmpty) {

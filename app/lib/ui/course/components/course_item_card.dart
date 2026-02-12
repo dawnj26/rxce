@@ -15,68 +15,39 @@ class CourseItemCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return LayoutBuilder(
-      builder: (context, constraints) {
-        const aspectRatio = 1 / 2;
-        final minHeight = constraints.maxWidth * aspectRatio;
+    const cardHeight = 232.0;
 
-        return Card(
-          clipBehavior: Clip.hardEdge,
-          color: context.appColor.neutral.shade100,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(12),
+    return Card(
+      clipBehavior: Clip.hardEdge,
+      color: context.appColor.neutral.shade100,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(12),
+      ),
+      margin: EdgeInsets.zero,
+      elevation: 0,
+      child: InkWell(
+        onTap: onTap,
+        child: ConstrainedBox(
+          constraints: const BoxConstraints(
+            maxHeight: cardHeight,
           ),
-          elevation: 0,
-          child: InkWell(
-            onTap: onTap,
-            child: ConstrainedBox(
-              constraints: BoxConstraints(
-                minHeight: minHeight,
-              ),
-              child: Padding(
-                padding: const EdgeInsets.all(16),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    _CourseItemHeader(course: course),
-                    Padding(
-                      padding: const EdgeInsets.fromLTRB(0, 8, 0, 24),
-                      child: _CourseDescription(
-                        description: course.description,
-                      ),
-                    ),
-                    _CardFooter(course: course),
-                  ],
+          child: Padding(
+            padding: const EdgeInsets.all(16),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                _CourseItemHeader(course: course),
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(0, 8, 0, 8),
+                  child: _CourseDescription(
+                    description: course.description,
+                  ),
                 ),
-              ),
+                const Spacer(),
+                _CardFooter(course: course),
+              ],
             ),
           ),
-        );
-      },
-    );
-  }
-}
-
-class _Ceu extends StatelessWidget {
-  const _Ceu({
-    required this.ceus,
-  });
-
-  final double ceus;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
-      decoration: BoxDecoration(
-        color: context.appColor.primary.shade500,
-        borderRadius: BorderRadius.circular(8),
-      ),
-      child: Text(
-        '$ceus CEU',
-        style: context.appText.labelMedium.copyWith(
-          color: context.appColor.primary.shade50,
-          fontWeight: FontWeight.w600,
         ),
       ),
     );
@@ -97,7 +68,7 @@ class _CourseDescription extends StatelessWidget {
       style: context.appText.paragraphSmall.copyWith(
         color: context.appColor.neutral.shade500,
       ),
-      maxLines: 2,
+      maxLines: 3,
       overflow: TextOverflow.ellipsis,
     );
   }
@@ -129,7 +100,7 @@ class _CardFooter extends StatelessWidget {
             ),
           ],
         ),
-        _Ceu(ceus: course.credits),
+        CeuBadge(ceus: course.credits),
       ],
     );
   }
@@ -177,20 +148,23 @@ class _CourseItemHeader extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Row(
-          mainAxisAlignment: .spaceBetween,
-          children: [
-            CourseTypeBadge(type: course.courseType),
-            if (course.isFreeForMembers) const FreeBadge(),
-          ],
+        ConstrainedBox(
+          constraints: const BoxConstraints(
+            minHeight: 24,
+          ),
+          child: Row(
+            mainAxisAlignment: .spaceBetween,
+            children: [
+              CourseTypeBadge(type: course.courseType),
+              if (course.isFreeForMembers) const FreeBadge(),
+            ],
+          ),
         ),
         const SizedBox(height: 8),
-        RichText(
-          text: TextSpan(
-            text: '${course.testName}\n',
-            style: context.appText.heading6.copyWith(
-              color: context.appColor.primary.shade900,
-            ),
+        Text(
+          course.testName,
+          style: context.appText.heading6.copyWith(
+            color: context.appColor.primary.shade900,
           ),
           maxLines: 2,
           overflow: TextOverflow.ellipsis,
